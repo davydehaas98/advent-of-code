@@ -12,7 +12,8 @@ public class Part1 {
 
         int largerMeasurements = countLargerMeasurements(measurements);
 
-        System.out.println(largerMeasurements + " measurements are larger than the previous measurement.");
+        System.out.println("Amount of measurements that are larger than the previous measurement:");
+        System.out.println(largerMeasurements);
     }
 
     private static int countLargerMeasurements(List<Integer> measurements) {
@@ -32,7 +33,7 @@ public class Part1 {
         List<Integer> measurements = new ArrayList<>();
 
         try {
-            File file = new File("src/main/resources/day1-input.txt");
+            File file = new File("src/main/resources/day01-input.txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 int measurement = Integer.parseInt(scanner.nextLine());

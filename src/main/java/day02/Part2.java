@@ -29,14 +29,15 @@ public class Part2 {
         }
         int multiplication = depth * horizontalPosition;
 
-        System.out.println("Depth times the horizontal position gives " + multiplication);
+        System.out.println("Depth times the horizontal position gives:");
+        System.out.println(multiplication);
     }
 
     private static List<String> getCommands() {
         List<String> commands = new ArrayList<>();
 
         try {
-            File file = new File("src/main/resources/day2-input.txt");
+            File file = new File("src/main/resources/day02-input.txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String command = scanner.nextLine();

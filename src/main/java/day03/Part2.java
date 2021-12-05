@@ -64,14 +64,15 @@ public class Part2 {
         int oxygenGeneratorRating = Integer.parseInt(oxygenGeneratorRatings.get(0), 2);
         int co2ScrubberRating = Integer.parseInt(co2ScrubberRatings.get(0), 2);
         int lifeSupportRating = oxygenGeneratorRating * co2ScrubberRating;
-        System.out.println("The life support rating of the submarine is " + lifeSupportRating);
+        System.out.println("The life support rating of the submarine is:");
+        System.out.println(lifeSupportRating);
     }
 
     private static List<String> getBinaryNumbers() {
         List<String> binaryNumbers = new ArrayList<>();
 
         try {
-            File file = new File("src/main/resources/day3-input.txt");
+            File file = new File("src/main/resources/day03-input.txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String binaryNumber = scanner.nextLine();

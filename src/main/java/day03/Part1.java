@@ -32,14 +32,15 @@ public class Part1 {
         int gammaRate = Integer.parseInt(gammaRateStringBuilder.toString(), 2);
         int epsilonRate = Integer.parseInt(epsilonRateStringBuilder.toString(), 2);
         int powerConsumption = gammaRate * epsilonRate;
-        System.out.println("The power consumption of the submarine is " + powerConsumption);
+        System.out.println("The power consumption of the submarine is:");
+        System.out.print(powerConsumption);
     }
 
     private static List<String> getBinaryNumbers() {
         List<String> binaryNumbers = new ArrayList<>();
 
         try {
-            File file = new File("src/main/resources/day3-input.txt");
+            File file = new File("src/main/resources/day03-input.txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String binaryNumber = scanner.nextLine();
