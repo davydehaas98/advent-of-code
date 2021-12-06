@@ -1,3 +1,2 @@
-# advent-of-code-2021
-Written in Java 17
+# advent-of-code
 https://adventofcode.com/
