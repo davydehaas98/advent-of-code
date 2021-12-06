@@ -1,22 +1,56 @@
-package main.java.day05;
+package main.java._2021.day05;
 
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 
-public class Part1 {
+public class Part2 {
     public static void main(String[] args) {
         List<Point[]> lines = getLines();
         LinkedHashMap<Point, Integer> vents = new LinkedHashMap<>();
         int dangerousAreaCounter = 0;
-
+        
         for (Point[] points : lines) {
             Point startPoint = points[0];
             Point endPoint = points[1];
-            // Skip over diagonal lines
-            if (startPoint.x == endPoint.x || startPoint.y == endPoint.y) {
+            // Check for diagonal lines
+            if (startPoint.x != endPoint.x && startPoint.y != endPoint.y) {
+                int difference;
+                // Diagonal line from left to right
+                if (startPoint.x < endPoint.x) {
+                    difference = endPoint.x - startPoint.x;
+                    // Diagonal line from top left to bottom right
+                    if (startPoint.y < endPoint.y) {
+                        for (int i = 0; i < difference + 1; i++) {
+                            addVent(vents, new Point(startPoint.x + i, startPoint.y + i));
+                        }
+                    }
+                    // Diagonal line from bottom left to top right
+                    else {
+                        for (int i = 0; i < difference + 1; i++) {
+                            addVent(vents, new Point(startPoint.x + i, startPoint.y - i));
+                        }
+                    }
+                }
+                // Diagonal line from right to left
+                else {
+                    difference = startPoint.x - endPoint.x;
+                    // Diagonal from top right to bottom left
+                    if (startPoint.y < endPoint.y) {
+                        for (int i = 0; i < difference + 1; i++) {
+                            addVent(vents, new Point(startPoint.x - i, startPoint.y + i));
+                        }
+                    }
+                    // Diagonal line bottom right to top left
+                    else {
+                        for (int i = 0; i < difference + 1; i++) {
+                            addVent(vents, new Point(startPoint.x - i, startPoint.y - i));
+                        }
+                    }
+                }
+            } else {
                 // Horizontal lines
                 // Start point x smaller than end point x
                 if (startPoint.x < endPoint.x) {
@@ -45,17 +79,17 @@ public class Part1 {
                 }
             }
         }
-
+        
         for (Map.Entry<Point, Integer> vent : vents.entrySet()) {
             if (vent.getValue() > 1) {
                 dangerousAreaCounter++;
             }
         }
-
+        
         System.out.println("The number of points where at least two lines overlap is:");
         System.out.println(dangerousAreaCounter);
     }
-
+    
     private static void addVent(LinkedHashMap<Point, Integer> vents, Point point) {
         if (vents.containsKey(point)) {
             int value = vents.get(point);
@@ -64,14 +98,13 @@ public class Part1 {
             vents.put(point, 1);
         }
     }
-
+    
     private static List<Point[]> getLines() {
         List<Point[]> lines = new ArrayList<>();
-
+        
         try {
-            File file = new File("src/main/resources/day05-input.txt");
+            File file = new File("src/main/resources/_2021/day05-input.txt");
             Scanner scanner = new Scanner(file);
-            
             while (scanner.hasNextLine()) {
                 String[] pointString = scanner.nextLine().split(" -> ");
                 
@@ -87,7 +120,7 @@ public class Part1 {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
+        
         return lines;
     }
 }

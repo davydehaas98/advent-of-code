@@ -1,7 +1,7 @@
-package main.java.day00;
+package main.java._2021.day07;
 
 public class Part1 {
     public static void main(String[] args) {
-
+    
     }
 }

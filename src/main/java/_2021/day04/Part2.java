@@ -1,24 +1,25 @@
-package main.java.day04;
+package main.java._2021.day04;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Part2 {
-    public static void main(String[] args) {List<Integer> calledNumbers = getCalledNumbers();
+    public static void main(String[] args) {
+        List<Integer> calledNumbers = getCalledNumbers();
         List<LinkedHashMap<Integer, Boolean>> boards = getBoards();
         int score = 0;
-
+        
         for (Integer calledNumber : calledNumbers) {
             Iterator<LinkedHashMap<Integer, Boolean>> iterator = boards.iterator();
             // Check if score is calculated
             if (score > 0) break;
             while (iterator.hasNext()) {
                 LinkedHashMap<Integer, Boolean> next = iterator.next();
-
+                
                 if (next.containsKey(calledNumber)) {
                     next.put(calledNumber, true);
-
+                    
                     if (checkBingo(next)) {
                         // Check if it is the last board
                         if (boards.size() == 1) {
@@ -39,11 +40,12 @@ public class Part2 {
                 }
             }
         }
-
+        
         System.out.println("The final score of the board that will win last is:");
         System.out.println(score);
-
+        
     }
+    
     private static boolean checkBingo(LinkedHashMap<Integer, Boolean> board) {
         Boolean[] isMarked = board.values().toArray(new Boolean[0]);
         // Check horizontal
@@ -66,33 +68,33 @@ public class Part2 {
                 return true;
             }
         }
-
+        
         return false;
     }
-
+    
     private static List<Integer> getCalledNumbers() {
         List<Integer> numbers = new ArrayList<>();
-
+        
         try {
-            File file = new File("src/main/resources/day04-input.txt");
+            File file = new File("src/main/resources/_2021/day04-input.txt");
             Scanner scanner = new Scanner(file);
             String[] numberStrings = scanner.nextLine().split(",");
             scanner.close();
-
+            
             for (String numberString : numberStrings) {
                 numbers.add(Integer.parseInt(numberString));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
+        
         return numbers;
     }
-
+    
     private static List<LinkedHashMap<Integer, Boolean>> getBoards() {
         LinkedHashMap<Integer, Boolean> board = new LinkedHashMap<>();
         List<LinkedHashMap<Integer, Boolean>> boards = new ArrayList<>();
-
+        
         try {
             File file = new File("src/main/resources/day04-input.txt");
             Scanner scanner = new Scanner(file);
@@ -100,13 +102,13 @@ public class Part2 {
             scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String row = scanner.nextLine();
-
+                
                 if (!row.isEmpty()) {
                     // Split numbers
                     row = row.replace("  ", ",");
                     row = row.replace(" ", ",");
                     String[] numberStrings = row.split(",");
-
+                    
                     for (String numberString : numberStrings) {
                         if (!numberString.isEmpty()) {
                             board.put(Integer.parseInt(numberString), false);
@@ -124,7 +126,7 @@ public class Part2 {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
+        
         return boards;
     }
 }
