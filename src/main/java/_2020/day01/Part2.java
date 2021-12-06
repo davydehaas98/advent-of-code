@@ -1,4 +1,4 @@
-package main.java._2020.day01;
+package _2020.day01;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ public class Part2 {
     public static void main(String[] args) {
         int target = 2020;
         List<Integer> expenses = getExpenses();
-        Integer[] sumToTarget = new Integer[] {0, 0, 0};
+        Integer[] sumToTarget = new Integer[]{0, 0, 0};
         boolean breakFlag = false;
         
         for (Integer expense : expenses) {

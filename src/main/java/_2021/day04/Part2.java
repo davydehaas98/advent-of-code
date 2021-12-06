@@ -1,8 +1,11 @@
-package main.java._2021.day04;
+package _2021.day04;
+
+import utils.FileReader;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Part2 {
     public static void main(String[] args) {
@@ -73,22 +76,10 @@ public class Part2 {
     }
     
     private static List<Integer> getCalledNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        
-        try {
-            File file = new File("src/main/resources/_2021/day04-input.txt");
-            Scanner scanner = new Scanner(file);
-            String[] numberStrings = scanner.nextLine().split(",");
-            scanner.close();
-            
-            for (String numberString : numberStrings) {
-                numbers.add(Integer.parseInt(numberString));
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        
-        return numbers;
+        return Arrays
+                .stream(FileReader.readFile("/_2021/day04-input.txt").get(0).split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
     
     private static List<LinkedHashMap<Integer, Boolean>> getBoards() {

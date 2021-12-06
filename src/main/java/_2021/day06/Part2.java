@@ -1,10 +1,15 @@
-package main.java._2021.day06;
+package _2021.day06;
+
+import utils.FileReader;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Part2 {
     public static void main(String[] args) {
@@ -50,27 +55,19 @@ public class Part2 {
     
     private static HashMap<Integer, BigInteger> getLanternfishes(int internalTimer) {
         HashMap<Integer, BigInteger> lanternfishes = new HashMap<>();
+        // Set up HashMap
         for (int i = 0; i < internalTimer; i++) {
             lanternfishes.put(i, BigInteger.ZERO);
         }
         
-        try {
-            File file = new File("src/main/resources/_2021/day06-input.txt");
-            Scanner scanner = new Scanner(file);
-            
-            while (scanner.hasNextLine()) {
-                String[] lanternfishStrings = scanner.nextLine().split(",");
-                
-                for (String lanternfishString : lanternfishStrings) {
-                    int lanternfish = Integer.parseInt(lanternfishString);
-                    BigInteger value = lanternfishes.get(lanternfish);
-                    lanternfishes.put(lanternfish, value.add(BigInteger.ONE));
-                }
-            }
-            
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        List<Integer> lanternfishIntegers = Arrays
+                .stream(FileReader.readFile("/_2021/day06-input.txt").get(0).split(","))
+                .map(Integer::parseInt)
+                .toList();
+        
+        for (Integer lanternfishInteger : lanternfishIntegers) {
+            BigInteger value = lanternfishes.get(lanternfishInteger);
+            lanternfishes.put(lanternfishInteger, value.add(BigInteger.ONE));
         }
         
         return lanternfishes;

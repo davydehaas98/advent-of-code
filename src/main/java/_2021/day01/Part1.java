@@ -1,10 +1,9 @@
-package main.java._2021.day01;
+package _2021.day01;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import utils.FileReader;
+
 import java.util.List;
-import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Part1 {
     public static void main(String[] args) {
@@ -30,19 +29,9 @@ public class Part1 {
     }
     
     private static List<Integer> getMeasurements() {
-        List<Integer> measurements = new ArrayList<>();
-        
-        try {
-            File file = new File("src/main/resources/_2021/day01-input.txt");
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                int measurement = Integer.parseInt(scanner.nextLine());
-                measurements.add(measurement);
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return measurements;
+        return FileReader.readFile("/_2021/day01-input.txt")
+                .stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }

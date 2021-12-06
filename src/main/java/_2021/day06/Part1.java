@@ -1,10 +1,14 @@
-package main.java._2021.day06;
+package _2021.day06;
+
+import utils.FileReader;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Part1 {
     public static void main(String[] args) {
@@ -31,25 +35,9 @@ public class Part1 {
     }
     
     private static List<Integer> getLanternfishes() {
-        List<Integer> lanternfish = new ArrayList<>();
-        
-        try {
-            File file = new File("src/main/resources/_2021/day06-input.txt");
-            Scanner scanner = new Scanner(file);
-            
-            while (scanner.hasNextLine()) {
-                String[] lanternfishStrings = scanner.nextLine().split(",");
-                
-                for (String lanternfishString : lanternfishStrings) {
-                    lanternfish.add(Integer.parseInt(lanternfishString));
-                }
-            }
-            
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        
-        return lanternfish;
+        return Arrays
+                .stream(FileReader.readFile("/_2021/day06-input.txt").get(0).split(","))
+                .map(Integer::parseInt)
+                .toList();
     }
 }
