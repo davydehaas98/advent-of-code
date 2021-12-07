@@ -1,6 +1,6 @@
 package _2021.day02;
 
-import utils.FileReader;
+import utils.InputReader;
 
 import java.util.List;
 
@@ -22,13 +22,13 @@ public class Part1 {
             }
         }
         
-        int multiplication = depth * horizontalPosition;
+        int product = depth * horizontalPosition;
         
-        System.out.println("Depth times the horizontal position gives:");
-        System.out.println(multiplication);
+        System.out.println("The product of the depth and the horizontal position gives:");
+        System.out.println(product);
     }
     
     private static List<String> getCommands() {
-        return FileReader.readFile("/_2021/day02-input.txt");
+        return InputReader.readFile("/_2021/day02-input.txt");
     }
 }

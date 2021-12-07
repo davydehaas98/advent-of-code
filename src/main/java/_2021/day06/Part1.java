@@ -1,14 +1,9 @@
 package _2021.day06;
 
-import utils.FileReader;
+import utils.InputReader;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Part1 {
     public static void main(String[] args) {
@@ -36,7 +31,7 @@ public class Part1 {
     
     private static List<Integer> getLanternfishes() {
         return Arrays
-                .stream(FileReader.readFile("/_2021/day06-input.txt").get(0).split(","))
+                .stream(InputReader.readFile("/_2021/day06-input.txt").get(0).split(","))
                 .map(Integer::parseInt)
                 .toList();
     }

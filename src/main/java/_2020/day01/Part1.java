@@ -1,10 +1,8 @@
 package _2020.day01;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import utils.InputReader;
+
 import java.util.List;
-import java.util.Scanner;
 
 public class Part1 {
     public static void main(String[] args) {
@@ -35,21 +33,9 @@ public class Part1 {
     }
     
     private static List<Integer> getExpenses() {
-        List<Integer> expenses = new ArrayList<>();
-        
-        try {
-            File file = new File("src/main/resources/_2020/day01-input.txt");
-            Scanner scanner = new Scanner(file);
-            
-            while (scanner.hasNextLine()) {
-                expenses.add(Integer.parseInt(scanner.nextLine()));
-            }
-            
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        
-        return expenses;
+        return InputReader.readFile("/_2020/day01-input.txt")
+                .stream()
+                .map(Integer::parseInt)
+                .toList();
     }
 }

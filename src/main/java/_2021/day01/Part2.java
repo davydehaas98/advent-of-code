@@ -1,10 +1,9 @@
 package _2021.day01;
 
-import utils.FileReader;
+import utils.InputReader;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Part2 {
     public static void main(String[] args) {
@@ -50,9 +49,9 @@ public class Part2 {
     }
     
     private static List<Integer> getMeasurements() {
-        return FileReader.readFile("/_2021/day01-input.txt")
+        return InputReader.readFile("/_2021/day01-input.txt")
                 .stream()
                 .map(Integer::parseInt)
-                .collect(Collectors.toList());
+                .toList();
     }
 }

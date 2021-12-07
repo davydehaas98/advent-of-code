@@ -1,6 +1,6 @@
 package _2021.day03;
 
-import utils.FileReader;
+import utils.InputReader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +14,16 @@ public class Part2 {
         
         for (int i = 0; i < bits; i++) {
             if (oxygenGeneratorRatings.size() > 1) {
-                int ratio = 0;
+                int balance = 0;
+                
                 for (String oxygenGeneratorRating : oxygenGeneratorRatings) {
-                    if (oxygenGeneratorRating.charAt(i) == '1') ratio++;
-                    else ratio--;
+                    if (oxygenGeneratorRating.charAt(i) == '1') balance++;
+                    else balance--;
                 }
                 
                 List<String> filteredList = new ArrayList<>();
                 
-                if (ratio < 0) {
+                if (balance < 0) {
                     for (String oxygenGeneratorRating : oxygenGeneratorRatings) {
                         if (oxygenGeneratorRating.charAt(i) == '0')
                             filteredList.add(oxygenGeneratorRating);
@@ -33,19 +34,21 @@ public class Part2 {
                             filteredList.add(oxygenGeneratorRating);
                     }
                 }
+                
                 oxygenGeneratorRatings = filteredList;
             }
             
             if (co2ScrubberRatings.size() > 1) {
+                int balance = 0;
                 
-                int ratio = 0;
                 for (String co2ScrubberRating : co2ScrubberRatings) {
-                    if (co2ScrubberRating.charAt(i) == '1') ratio++;
-                    else ratio--;
+                    if (co2ScrubberRating.charAt(i) == '1') balance++;
+                    else balance--;
                 }
                 
                 List<String> filteredList = new ArrayList<>();
-                if (ratio < 0) {
+                
+                if (balance < 0) {
                     for (String co2ScrubberRating : co2ScrubberRatings) {
                         if (co2ScrubberRating.charAt(i) == '1')
                             filteredList.add(co2ScrubberRating);
@@ -56,6 +59,7 @@ public class Part2 {
                             filteredList.add(co2ScrubberRating);
                     }
                 }
+                
                 co2ScrubberRatings = filteredList;
             }
         }
@@ -69,6 +73,6 @@ public class Part2 {
     }
     
     private static List<String> getBinaryNumbers() {
-        return FileReader.readFile("/_2021/day03-input.txt");
+        return InputReader.readFile("/_2021/day03-input.txt");
     }
 }

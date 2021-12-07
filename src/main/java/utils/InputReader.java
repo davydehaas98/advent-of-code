@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileReader {
+public class InputReader {
     @SneakyThrows
     public static List<String> readFile(String pathName) {
         return new ArrayList<>(Files.readAllLines(Path.of(String.format("src/main/resources/%s", pathName))));

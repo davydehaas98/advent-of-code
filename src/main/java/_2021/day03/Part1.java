@@ -1,6 +1,6 @@
 package _2021.day03;
 
-import utils.FileReader;
+import utils.InputReader;
 
 import java.util.List;
 
@@ -11,14 +11,14 @@ public class Part1 {
         StringBuilder epsilonRateStringBuilder = new StringBuilder();
         
         for (int i = 0; i < 12; i++) {
-            int ratio = 0;
+            int balance = 0;
             
             for (String binaryNumber : binaryNumbers) {
-                if (binaryNumber.charAt(i) == '1') ratio++;
-                else ratio--;
+                if (binaryNumber.charAt(i) == '1') balance++;
+                else balance--;
             }
             
-            if (ratio < 0) {
+            if (balance < 0) {
                 gammaRateStringBuilder.append("0");
                 epsilonRateStringBuilder.append("1");
             } else {
@@ -26,6 +26,7 @@ public class Part1 {
                 epsilonRateStringBuilder.append("0");
             }
         }
+        
         int gammaRate = Integer.parseInt(gammaRateStringBuilder.toString(), 2);
         int epsilonRate = Integer.parseInt(epsilonRateStringBuilder.toString(), 2);
         int powerConsumption = gammaRate * epsilonRate;
@@ -35,6 +36,6 @@ public class Part1 {
     }
     
     private static List<String> getBinaryNumbers() {
-        return FileReader.readFile("/_2021/day03-input.txt");
+        return InputReader.readFile("/_2021/day03-input.txt");
     }
 }
