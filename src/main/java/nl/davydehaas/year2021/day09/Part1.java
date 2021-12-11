@@ -49,8 +49,7 @@ public class Part1 {
         
         int down = row + 1;
         if (down <= maxRowIndex)
-            if (point >= heightMap[column][down])
-                return false;
+            return point < heightMap[column][down];
         
         return true;
     }
