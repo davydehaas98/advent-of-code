@@ -115,7 +115,7 @@ public class Part2 {
     private static List<Point[]> getLines() {
         List<Point[]> lines = new ArrayList<>();
         
-        InputReader.readFile("/_2021/day05-input.txt").forEach(fileLine -> lines.add(new Point[]{
+        InputReader.readFile("/year2021/day05-input.txt").forEach(fileLine -> lines.add(new Point[]{
                 new Point(
                         Integer.parseInt(fileLine.split(" -> ")[0].split(",")[0]),
                         Integer.parseInt(fileLine.split(" -> ")[0].split(",")[1])

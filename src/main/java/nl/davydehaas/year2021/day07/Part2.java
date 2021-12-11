@@ -37,7 +37,7 @@ public class Part2 {
     }
     
     private static List<Integer> getCrabPositions() {
-        return Arrays.stream(InputReader.readFile("/_2021/day07-input.txt").get(0).split(","))
+        return Arrays.stream(InputReader.readFile("/year2021/day07-input.txt").get(0).split(","))
                 .map(Integer::parseInt)
                 .sorted()
                 .toList();

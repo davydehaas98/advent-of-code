@@ -49,7 +49,7 @@ public class Part2 {
     }
     
     private static List<Integer> getMeasurements() {
-        return InputReader.readFile("/_2021/day01-input.txt")
+        return InputReader.readFile("/year2021/day01-input.txt")
                 .stream()
                 .map(Integer::parseInt)
                 .toList();

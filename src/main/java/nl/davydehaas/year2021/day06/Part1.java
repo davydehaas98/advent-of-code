@@ -31,7 +31,7 @@ public class Part1 {
     
     private static List<Integer> getLanternfishes() {
         return Arrays
-                .stream(InputReader.readFile("/_2021/day06-input.txt").get(0).split(","))
+                .stream(InputReader.readFile("/year2021/day06-input.txt").get(0).split(","))
                 .map(Integer::parseInt)
                 .toList();
     }

@@ -32,6 +32,6 @@ public class Part2 {
     }
     
     private static List<String> getCommands() {
-        return InputReader.readFile("/_2021/day02-input.txt");
+        return InputReader.readFile("/year2021/day02-input.txt");
     }
 }

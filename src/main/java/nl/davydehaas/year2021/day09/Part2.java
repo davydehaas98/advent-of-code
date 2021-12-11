@@ -92,7 +92,7 @@ public class Part2 {
     }
     
     private static int[][] getHeightMap() {
-        List<String> lines = InputReader.readFile("/_2021/day09-input.txt");
+        List<String> lines = InputReader.readFile("/year2021/day09-input.txt");
         int[][] heightMap = new int[lines.size()][lines.get(0).length()];
         
         for (int column = 0; column < heightMap[0].length; column++)

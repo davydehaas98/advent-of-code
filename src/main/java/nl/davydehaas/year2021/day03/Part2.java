@@ -73,6 +73,6 @@ public class Part2 {
     }
     
     private static List<String> getBinaryNumbers() {
-        return InputReader.readFile("/_2021/day03-input.txt");
+        return InputReader.readFile("/year2021/day03-input.txt");
     }
 }

@@ -44,7 +44,7 @@ public class Part2 {
     }
     
     private static List<Integer> getExpenses() {
-        return InputReader.readFile("/_2020/day01-input.txt")
+        return InputReader.readFile("/year2020/day01-input.txt")
                 .stream()
                 .map(Integer::parseInt)
                 .toList();

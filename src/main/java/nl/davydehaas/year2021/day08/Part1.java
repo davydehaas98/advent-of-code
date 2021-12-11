@@ -23,7 +23,7 @@ public class Part1 {
     private static List<String> getOutputValues() {
         List<String> outputValues = new ArrayList<>();
         
-        InputReader.readFile("/_2021/day08-input.txt")
+        InputReader.readFile("/year2021/day08-input.txt")
                 .forEach(line ->
                         outputValues.addAll(Arrays.stream(line.split(" \\| ")[1].split(" ")).toList())
                 );

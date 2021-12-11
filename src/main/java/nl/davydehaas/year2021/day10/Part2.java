@@ -57,6 +57,6 @@ public class Part2 {
     }
     
     private static List<String> getNavigationLines() {
-        return InputReader.readFile("/_2021/day10-input.txt");
+        return InputReader.readFile("/year2021/day10-input.txt");
     }
 }

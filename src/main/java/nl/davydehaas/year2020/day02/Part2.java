@@ -28,7 +28,7 @@ public class Part2 {
     }
     
     private static List<String[]> getPolicies() {
-        List<String> lines = InputReader.readFile("/_2020/day02-input.txt");
+        List<String> lines = InputReader.readFile("/year2020/day02-input.txt");
         List<String[]> policies = new ArrayList<>();
         
         for (String line : lines) {
