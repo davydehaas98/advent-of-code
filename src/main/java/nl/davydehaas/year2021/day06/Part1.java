@@ -9,6 +9,8 @@ public class Part1 {
     public static void main(String[] args) {
         List<Integer> lanternfishes = getLanternfishes();
         int days = 80;
+        int internalTimer = 8;
+        int resetInternalTimer = 6;
         
         for (int i = 0; i < days; i++) {
             int amount = lanternfishes.size();
@@ -19,8 +21,8 @@ public class Part1 {
                 if (lanternfish > 0) {
                     lanternfishes.set(j, lanternfish - 1);
                 } else {
-                    lanternfishes.set(j, 6);
-                    lanternfishes.add(8);
+                    lanternfishes.set(j, resetInternalTimer);
+                    lanternfishes.add(internalTimer);
                 }
             }
         }
