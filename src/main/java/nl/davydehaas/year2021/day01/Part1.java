@@ -19,8 +19,9 @@ public class Part1 {
         int previousMeasurement = measurements.get(0);
         
         for (int measurement : measurements) {
-            if (measurement > previousMeasurement)
+            if (measurement > previousMeasurement) {
                 largerMeasurementCounter++;
+            }
             previousMeasurement = measurement;
         }
         

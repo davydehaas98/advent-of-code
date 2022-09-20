@@ -58,7 +58,7 @@ public class Part2 {
         Arrays.stream(InputReader.readFile("/year2021/day06-input.txt").get(0).split(","))
                 .map(Integer::parseInt)
                 .toList()
-                .forEach(i -> lanternfishes.put(i, lanternfishes.get(i).add(BigInteger.ONE)));
+                .forEach(timer -> lanternfishes.put(timer, lanternfishes.get(timer).add(BigInteger.ONE)));
         
         return lanternfishes;
     }

@@ -2,12 +2,13 @@ package nl.davydehaas.year2021.day06;
 
 import nl.davydehaas.utils.InputReader;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Part1 {
     public static void main(String[] args) {
-        List<Integer> lanternfishes = getLanternfishes();
+        List<Integer> lanternfishes = new ArrayList<>(getLanternfishes());
         int days = 80;
         int internalTimer = 8;
         int resetInternalTimer = 6;

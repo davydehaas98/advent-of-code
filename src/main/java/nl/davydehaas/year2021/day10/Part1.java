@@ -11,13 +11,27 @@ public class Part1 {
         AtomicInteger points = new AtomicInteger();
         
         navigationLines.forEach(line ->
-                points.addAndGet(calculateCorruptedLinePoints(
-                        removeValidChunks(line)
-                ))
-        );
+                points.addAndGet(calculateCorruptedLinePoints(removeValidChunks(line))));
         
         System.out.println("The total syntax error score is:");
         System.out.println(points.get());
+    }
+    
+    private static String removeValidChunks(String navigationLine) {
+        int startLength = navigationLine.length();
+        
+        String modifiedNavigationLine = navigationLine
+                .replace("()", "")
+                .replace("[]", "")
+                .replace("{}", "")
+                .replace("<>", "");
+        
+        // Check if navigation line is modified
+        if (startLength != modifiedNavigationLine.length()) {
+            return removeValidChunks(modifiedNavigationLine);
+        }
+        
+        return modifiedNavigationLine;
     }
     
     private static int calculateCorruptedLinePoints(String line) {
@@ -35,21 +49,6 @@ public class Part1 {
         }
         
         return 0;
-    }
-    
-    private static String removeValidChunks(String navigationLine) {
-        while (true) {
-            int lineLength = navigationLine.length();
-            
-            navigationLine = navigationLine.replace("()", "").replace("[]", "")
-                    .replace("{}", "")
-                    .replace("<>", "");
-            
-            if (lineLength == navigationLine.length())
-                break;
-        }
-        
-        return navigationLine;
     }
     
     private static List<String> getNavigationLines() {

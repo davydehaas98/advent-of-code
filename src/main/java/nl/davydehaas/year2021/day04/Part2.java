@@ -93,7 +93,7 @@ public class Part2 {
         for (String line : lines) {
             if (!line.isEmpty()) {
                 List<Integer> numbers = Arrays.stream(line.replace("  ", " ").split(" "))
-                        .filter(s -> !s.isEmpty())
+                        .filter(string -> !string.isEmpty())
                         .map(Integer::parseInt)
                         .toList();
                 

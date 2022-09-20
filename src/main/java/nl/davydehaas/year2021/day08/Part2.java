@@ -108,7 +108,7 @@ public class Part2 {
             if (digits[2] == null || digits[5] == null) {
                 String remainingCharacters = signal;
                 
-                assert digits[9] != null;
+                assert digits[9] != null; 
                 for (char character : digits[9].toCharArray()) {
                     remainingCharacters = remainingCharacters.replaceFirst(String.valueOf(character), "");
                 }

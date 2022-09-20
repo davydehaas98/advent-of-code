@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Part2 {
-    static int[][] heightMap;
+    private static int[][] heightMap;
     static int sizeCounter;
     
     public static void main(String[] args) {
@@ -20,9 +20,9 @@ public class Part2 {
                 if (isLowestPoint(column, row))
                     lowestPoints.add(new Point(column, row));
         
-        lowestPoints.forEach(p -> {
+        lowestPoints.forEach(point -> {
             sizeCounter = 0;
-            basins.add(calculateBasinSize(p.x, p.y));
+            basins.add(calculateBasinSize(point.x, point.y));
         });
         
         int product = basins.stream().sorted().toList()
@@ -69,24 +69,30 @@ public class Part2 {
         int point = heightMap[column][row];
         
         int left = column - 1;
-        if (left >= 0)
-            if (point >= heightMap[left][row])
+        if (left >= 0) {
+            if (point >= heightMap[left][row]) {
                 return false;
+            }
+        }
         
         int right = column + 1;
-        if (right <= maxColumnIndex)
-            if (point >= heightMap[right][row])
+        if (right <= maxColumnIndex) {
+            if (point >= heightMap[right][row]) {
                 return false;
+            }
+        }
         
         int up = row - 1;
-        if (up >= 0)
-            if (point >= heightMap[column][up])
+        if (up >= 0) {
+            if (point >= heightMap[column][up]) {
                 return false;
+            }
+        }
         
         int down = row + 1;
-        if (down <= maxRowIndex)
+        if (down <= maxRowIndex) {
             return point < heightMap[column][down];
-        
+        }
         return true;
     }
     
@@ -94,10 +100,11 @@ public class Part2 {
         List<String> lines = InputReader.readFile("/year2021/day09-input.txt");
         int[][] heightMap = new int[lines.size()][lines.get(0).length()];
         
-        for (int column = 0; column < heightMap[0].length; column++)
-            for (int row = 0; row < heightMap.length; row++)
+        for (int column = 0; column < heightMap[0].length; column++) {
+            for (int row = 0; row < heightMap.length; row++) {
                 heightMap[row][column] = Integer.parseInt(String.valueOf(lines.get(row).charAt(column)));
-        
+            }
+        }
         return heightMap;
     }
 }

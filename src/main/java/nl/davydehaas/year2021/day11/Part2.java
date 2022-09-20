@@ -62,10 +62,11 @@ public class Part2 {
         List<String> lines = InputReader.readFile("/year2021/day11-input.txt");
         int[][] octopuses = new int[lines.size()][lines.get(0).length()];
         
-        for (int column = 0; column < octopuses[0].length; column++)
-            for (int row = 0; row < octopuses.length; row++)
+        for (int column = 0; column < octopuses[0].length; column++) {
+            for (int row = 0; row < octopuses.length; row++) {
                 octopuses[row][column] = Integer.parseInt(String.valueOf(lines.get(row).charAt(column)));
-        
+            }
+        }
         return octopuses;
     }
 }

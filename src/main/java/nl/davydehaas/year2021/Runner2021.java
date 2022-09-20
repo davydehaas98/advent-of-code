@@ -1,11 +1,7 @@
 package nl.davydehaas.year2021;
 
-import lombok.SneakyThrows;
-
-import java.util.concurrent.TimeUnit;
-
 public class Runner2021 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("##### Day 01 #####");
         System.out.println("----- Part 1 -----");
         timeSolution(() -> nl.davydehaas.year2021.day01.Part1.main(args));
@@ -68,8 +64,7 @@ public class Runner2021 {
         timeSolution(() -> nl.davydehaas.year2021.day12.Part2.main(args));
     }
     
-    @SneakyThrows
-    private static void timeSolution(Runnable runnable) {
+    private static void timeSolution(Runnable runnable) throws InterruptedException {
         Thread thread = new Thread(runnable);
         long startTime = System.nanoTime();
         
@@ -77,7 +72,7 @@ public class Runner2021 {
         thread.join();
         
         long endTime = System.nanoTime();
-        double duration = (endTime - startTime) / 1000000;
+        double duration = (endTime - startTime) / 1000000F;
     
         System.out.println(duration + " ms");
     }
