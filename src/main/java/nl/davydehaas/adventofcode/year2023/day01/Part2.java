@@ -16,13 +16,7 @@ public class Part2 {
         List<String> calibrationDocument = getCalibrationDocument();
         
         return calibrationDocument.stream()
-                .map(line -> {
-                    String transformedString = "";
-                    for (int i = 0; i < line.length(); i++) {
-                        transformedString = transformSpelledDigit(transformedString + line.charAt(i));
-                    }
-                    return transformedString;
-                })
+                .map(Part2::transformSpelledDigit)
                 .map(line -> line.replaceAll("[(\\D)]", ""))
                 .map(digits -> digits.charAt(0) + "" + digits.charAt(digits.length() - 1))
                 .mapToInt(Integer::parseInt)
@@ -31,15 +25,15 @@ public class Part2 {
     
     private static String transformSpelledDigit(String line) {
         return line
-                .replace("one", "o1e")
-                .replace("two", "t2o")
-                .replace("three", "t3e")
-                .replace("four", "f4r")
-                .replace("five", "f5e")
-                .replace("six", "s6x")
-                .replace("seven", "s7n")
-                .replace("eight", "e8t")
-                .replace("nine", "n9e");
+                .replaceAll("one", "o1e")
+                .replaceAll("two", "t2o")
+                .replaceAll("three", "t3e")
+                .replaceAll("four", "f4r")
+                .replaceAll("five", "f5e")
+                .replaceAll("six", "s6x")
+                .replaceAll("seven", "s7n")
+                .replaceAll("eight", "e8t")
+                .replaceAll("nine", "n9e");
     }
     
     private static List<String> getCalibrationDocument() {
