@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day01;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +50,7 @@ public class Part2 {
     }
     
     private static List<Integer> getMeasurements() {
-        return InputReader.readFile("/year2021/day01-input.txt")
-                .stream()
+        return Utils.readFile("/year2021/day01.txt").stream()
                 .map(Integer::parseInt)
                 .toList();
     }

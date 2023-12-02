@@ -1,27 +1,31 @@
 package nl.davydehaas.adventofcode.year2023.day02;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.year2023.Year2023;
 
 import java.util.List;
 
-public class Part2 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+public class Part2 extends Year2023 {
+    
+    private static final List<String> INPUT = readFile("/day02.txt");
     
     private static int MAX_RED_CUBES = 0;
     private static int MAX_GREEN_CUBES = 0;
     private static int MAX_BLUE_CUBES = 0;
     
     public static void main(String[] args) {
-        int result = calculate();
-        System.out.println("What is the sum of the power of these sets?");
-        System.out.println(result);
+        timeSolution(Part1::calculate);
     }
     
     static int calculate() {
-        List<String> input = getGames();
+        int sum = 0;
         
-        return input.stream()
-                .mapToInt(Part2::calculateGame)
-                .sum();
+        for (String game : INPUT) {
+            sum += calculateGame(game);
+        }
+        
+        return sum;
     }
     
     private static int calculateGame(String game) {
@@ -39,9 +43,10 @@ public class Part2 {
     }
     
     private static void isPossibleCube(String cube) {
-        String cubeColor = cube.substring(cube.indexOf(" ") + 1);
-        int cubeAmount = Integer.parseInt(cube.substring(0, cube.indexOf(" ")));
-        switch (cubeColor) {
+        // { "4", "green" }
+        String[] cubeColor = cube.split(" ");
+        int cubeAmount = Integer.parseInt(cubeColor[0]);
+        switch (cubeColor[1]) {
             case "red" -> {
                 if (cubeAmount > MAX_RED_CUBES) {
                     MAX_RED_CUBES = cubeAmount;
@@ -58,9 +63,5 @@ public class Part2 {
                 }
             }
         }
-    }
-    
-    private static List<String> getGames() {
-        return InputReader.readFile("/year2023/day02-input.txt");
     }
 }

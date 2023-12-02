@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day04;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,7 +78,7 @@ public class Part2 {
     
     private static List<Integer> getCalledNumbers() {
         return Arrays
-                .stream(InputReader.readFile("/year2021/day04-input.txt").get(0).split(","))
+                .stream(Utils.readFile("/year2021/day04.txt").get(0).split(","))
                 .map(Integer::parseInt)
                 .toList();
     }
@@ -87,7 +87,7 @@ public class Part2 {
         List<Integer[]> board = new ArrayList<>();
         List<List<Integer[]>> boards = new ArrayList<>();
         
-        List<String> lines = InputReader.readFile("/year2021/day04-input.txt");
+        List<String> lines = Utils.readFile("/year2021/day04.txt");
         lines = lines.subList(1, lines.size());
         
         for (String line : lines) {

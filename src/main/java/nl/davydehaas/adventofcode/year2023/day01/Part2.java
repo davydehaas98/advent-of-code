@@ -1,26 +1,29 @@
 package nl.davydehaas.adventofcode.year2023.day01;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.year2023.Year2023;
 
 import java.util.List;
 
-public class Part2 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+public class Part2 extends Year2023 {
+    
+    private static final List<String> INPUT = readFile("/day01.txt");
     
     public static void main(String[] args) {
-        int result = calculate();
-        System.out.println("What is the sum of all of the calibration values?");
-        System.out.println(result);
+        timeSolution(Part2::calculate);
     }
     
     static int calculate() {
-        List<String> calibrationDocument = getCalibrationDocument();
+        int sum = 0;
         
-        return calibrationDocument.stream()
-                .map(Part2::transformSpelledDigit)
-                .map(line -> line.replaceAll("[(\\D)]", ""))
-                .map(digits -> digits.charAt(0) + "" + digits.charAt(digits.length() - 1))
-                .mapToInt(Integer::parseInt)
-                .sum();
+        for (String line : INPUT) {
+            line = transformSpelledDigit(line);
+            line = line.replaceAll("[(\\D)]", "");
+            sum += Integer.parseInt(line.charAt(0) + "" + line.charAt(line.length() - 1));
+        }
+        
+        return sum;
     }
     
     private static String transformSpelledDigit(String line) {
@@ -34,9 +37,5 @@ public class Part2 {
                 .replaceAll("seven", "s7n")
                 .replaceAll("eight", "e8t")
                 .replaceAll("nine", "n9e");
-    }
-    
-    private static List<String> getCalibrationDocument() {
-        return InputReader.readFile("/year2023/day01-input.txt");
     }
 }

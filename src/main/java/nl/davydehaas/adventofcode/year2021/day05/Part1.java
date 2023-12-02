@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day05;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.utils.Utils;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -77,7 +77,7 @@ public class Part1 {
     private static List<Point[]> getLines() {
         List<Point[]> lines = new ArrayList<>();
         
-        InputReader.readFile("/year2021/day05-input.txt").forEach(fileLine -> lines.add(new Point[]{
+        Utils.readFile("/year2021/day05.txt").forEach(fileLine -> lines.add(new Point[]{
                 new Point(
                         Integer.parseInt(fileLine.split(" -> ")[0].split(",")[0]),
                         Integer.parseInt(fileLine.split(" -> ")[0].split(",")[1])

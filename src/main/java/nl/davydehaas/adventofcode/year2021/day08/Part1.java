@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day08;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +23,7 @@ public class Part1 {
     private static List<String> getOutputValues() {
         List<String> outputValues = new ArrayList<>();
         
-        InputReader.readFile("/year2021/day08-input.txt")
+        Utils.readFile("/year2021/day08.txt")
                 .forEach(line ->
                         outputValues.addAll(Arrays.stream(line.split(" \\| ")[1].split(" ")).toList())
                 );

@@ -1,11 +1,14 @@
 package nl.davydehaas.adventofcode.year2023.day02;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
-import nl.davydehaas.adventofcode.year2020.Year2020;
+import nl.davydehaas.adventofcode.year2023.Year2023;
 
 import java.util.List;
 
-public class Part1 extends Year2020 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+public class Part1 extends Year2023 {
+    
+    private static final List<String> INPUT = readFile("/day02.txt");
     
     private static final int MAX_RED_CUBES = 12;
     private static final int MAX_GREEN_CUBES = 13;
@@ -13,28 +16,29 @@ public class Part1 extends Year2020 {
     
     
     public static void main(String[] args) {
-        int result = calculate();
-        System.out.println("What is the sum of the IDs of those games?");
-        System.out.println(result);
+        timeSolution(Part1::calculate);
     }
     
     static int calculate() {
-        List<String> input = getGames();
+        int sum = 0;
         
-        return input.stream()
-                .filter(Part1::isPossibleGame)
-                .mapToInt(game -> Integer.parseInt(game.substring(5, game.indexOf(":"))))
-                .sum();
+        for (String game : INPUT) {
+            if (isPossibleGame(game)) {
+                sum += Integer.parseInt(game.substring(5, game.indexOf(":")));
+            }
+        }
+        
+        return sum;
     }
     
     private static boolean isPossibleGame(String game) {
-        String[] cubeSets = game.substring(game.indexOf(":") + 2).split("; ");
+        String[] cubes = game
+                .substring(game.indexOf(":") + 2)
+                .split("; |, ");
         
-        for (String cubeSet : cubeSets) {
-            for (String cube : cubeSet.split(", ")) {
-                if (!isPossibleCube(cube)) {
-                    return false;
-                }
+        for (String cube : cubes) {
+            if (!isPossibleCube(cube)) {
+                return false;
             }
         }
         return true;
@@ -49,9 +53,5 @@ public class Part1 extends Year2020 {
             case "blue" -> cubeAmount <= MAX_BLUE_CUBES;
             default -> false;
         };
-    }
-    
-    private static List<String> getGames() {
-        return InputReader.readFile("/year2023/day02-input.txt");
     }
 }

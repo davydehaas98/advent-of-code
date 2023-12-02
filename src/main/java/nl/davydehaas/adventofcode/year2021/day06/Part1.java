@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day06;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +34,7 @@ public class Part1 {
     
     private static List<Integer> getLanternfishes() {
         return Arrays
-                .stream(InputReader.readFile("/year2021/day06-input.txt").get(0).split(","))
+                .stream(Utils.readFile("/year2021/day06.txt").get(0).split(","))
                 .map(Integer::parseInt)
                 .toList();
     }

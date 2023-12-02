@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day11;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.utils.Utils;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ public class Part1 {
     }
     
     private static int[][] getOctopuses() {
-        List<String> lines = InputReader.readFile("/year2021/day11-input.txt");
+        List<String> lines = Utils.readFile("/year2021/day11.txt");
         int[][] octopuses = new int[lines.size()][lines.get(0).length()];
         
         for (int column = 0; column < octopuses[0].length; column++) {

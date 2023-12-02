@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day07;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.utils.Utils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +24,7 @@ public class Part1 {
     }
     
     private static List<Integer> getCrabPositions() {
-        return Arrays.stream(InputReader.readFile("/year2021/day07-input.txt").get(0).split(","))
+        return Arrays.stream(Utils.readFile("/year2021/day07.txt").get(0).split(","))
                 .map(Integer::parseInt)
                 .sorted()
                 .toList();

@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day10;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +57,6 @@ public class Part2 {
     }
     
     private static List<String> getNavigationLines() {
-        return InputReader.readFile("/year2021/day10-input.txt");
+        return Utils.readFile("/year2021/day10.txt");
     }
 }

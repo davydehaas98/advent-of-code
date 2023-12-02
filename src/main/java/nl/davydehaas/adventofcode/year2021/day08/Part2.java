@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day08;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -139,7 +139,7 @@ public class Part2 {
     private static List<String[]> getOutputValues() {
         List<String[]> outputValues = new ArrayList<>();
         
-        InputReader.readFile("/year2021/day08-input.txt")
+        Utils.readFile("/year2021/day08.txt")
                 .forEach(line -> outputValues.add(line.split(" \\| ")[1].split(" ")));
         
         return outputValues;
@@ -148,7 +148,7 @@ public class Part2 {
     private static List<String[]> getSignalPatterns() {
         List<String[]> signalPatterns = new ArrayList<>();
         
-        InputReader.readFile("/year2021/day08-input.txt")
+        Utils.readFile("/year2021/day08.txt")
                 .forEach(line -> signalPatterns.add(line.split(" \\| ")[0].split(" ")));
         
         return signalPatterns;

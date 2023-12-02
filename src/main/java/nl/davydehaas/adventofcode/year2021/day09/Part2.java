@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day09;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.utils.Utils;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -97,7 +97,7 @@ public class Part2 {
     }
     
     private static int[][] getHeightMap() {
-        List<String> lines = InputReader.readFile("/year2021/day09-input.txt");
+        List<String> lines = Utils.readFile("/year2021/day09.txt");
         int[][] heightMap = new int[lines.size()][lines.get(0).length()];
         
         for (int column = 0; column < heightMap[0].length; column++) {

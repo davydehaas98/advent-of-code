@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day12;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -56,7 +56,7 @@ public class Part1 {
     private static Set<String[]> getConnections() {
         Set<String[]> connections = new LinkedHashSet<>();
         
-        InputReader.readFile("/year2021/day12-input-test.txt")
+        Utils.readFile("/year2021/day12-test.txt")
                 .forEach(line -> {
                     String[] connection = line.split("-");
                     connections.add(connection);

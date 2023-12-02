@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day06;
 
-import nl.davydehaas.adventofcode.utils.InputReader;
+import nl.davydehaas.adventofcode.utils.Utils;
 
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -55,7 +55,7 @@ public class Part2 {
             lanternfishes.put(i, BigInteger.ZERO);
         }
         
-        Arrays.stream(InputReader.readFile("/year2021/day06-input.txt").get(0).split(","))
+        Arrays.stream(Utils.readFile("/year2021/day06.txt").get(0).split(","))
                 .map(Integer::parseInt)
                 .toList()
                 .forEach(timer -> lanternfishes.put(timer, lanternfishes.get(timer).add(BigInteger.ONE)));
