@@ -1,20 +1,28 @@
 package nl.davydehaas.adventofcode.year2021.day10;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Part1 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part1 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day10.txt");
+    
     public static void main(String[] args) {
-        List<String> navigationLines = getNavigationLines();
+        timeSolution(Part1::calculate);
+    }
+    
+    static int calculate() {
         AtomicInteger points = new AtomicInteger();
         
-        navigationLines.forEach(line ->
-                points.addAndGet(calculateCorruptedLinePoints(removeValidChunks(line))));
+        for (String line : INPUT) {
+            points.addAndGet(calculateCorruptedLinePoints(removeValidChunks(line)));
+        }
         
-        System.out.println("The total syntax error score is:");
-        System.out.println(points.get());
+        return points.get();
     }
     
     private static String removeValidChunks(String navigationLine) {
@@ -49,9 +57,5 @@ public class Part1 {
         }
         
         return 0;
-    }
-    
-    private static List<String> getNavigationLines() {
-        return Utils.readFile("/year2021/day10.txt");
     }
 }

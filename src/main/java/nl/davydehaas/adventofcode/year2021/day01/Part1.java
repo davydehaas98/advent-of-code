@@ -1,17 +1,23 @@
 package nl.davydehaas.adventofcode.year2021.day01;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
-public class Part1 {
+import java.util.List;
+
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part1 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day01.txt");
+    
     public static void main(String[] args) {
-        Integer result = calculate();
-        
-        System.out.println("Amount of measurements that are larger than the previous measurement:");
-        System.out.println(result);
+        timeSolution(Part1::calculate);
     }
     
     static int calculate() {
-        int[] measurements = getMeasurements();
+        int[] measurements = INPUT.stream()
+                .mapToInt(Integer::parseInt)
+                .toArray();
         
         int largerMeasurementCounter = 0;
         int previousMeasurement = measurements[0];
@@ -24,11 +30,5 @@ public class Part1 {
         }
         
         return largerMeasurementCounter;
-    }
-    
-    private static int[] getMeasurements() {
-        return Utils.readFile("/year2021/day01.txt").stream()
-                .mapToInt(Integer::parseInt)
-                .toArray();
     }
 }

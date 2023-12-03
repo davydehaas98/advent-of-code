@@ -6,7 +6,7 @@ import java.util.List;
 
 import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
 
-public class Part1 extends Year2023 {
+class Part1 extends Year2023 {
     
     private static final List<String> INPUT = readFile("/day02.txt");
     

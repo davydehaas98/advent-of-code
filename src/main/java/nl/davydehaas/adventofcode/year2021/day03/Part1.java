@@ -1,19 +1,27 @@
 package nl.davydehaas.adventofcode.year2021.day03;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.util.List;
 
-public class Part1 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part1 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day03.txt");
+    
     public static void main(String[] args) {
-        List<String> binaryNumbers = getBinaryNumbers();
+        timeSolution(Part1::calculate);
+    }
+    
+    static int calculate() {
         StringBuilder gammaRateStringBuilder = new StringBuilder();
         StringBuilder epsilonRateStringBuilder = new StringBuilder();
         
         for (int i = 0; i < 12; i++) {
             int balance = 0;
             
-            for (String binaryNumber : binaryNumbers) {
+            for (String binaryNumber : INPUT) {
                 if (binaryNumber.charAt(i) == '1') balance++;
                 else balance--;
             }
@@ -29,13 +37,6 @@ public class Part1 {
         
         int gammaRate = Integer.parseInt(gammaRateStringBuilder.toString(), 2);
         int epsilonRate = Integer.parseInt(epsilonRateStringBuilder.toString(), 2);
-        int powerConsumption = gammaRate * epsilonRate;
-        
-        System.out.println("The power consumption of the submarine is:");
-        System.out.print(powerConsumption);
-    }
-    
-    private static List<String> getBinaryNumbers() {
-        return Utils.readFile("/year2021/day03.txt");
+        return gammaRate * epsilonRate;
     }
 }

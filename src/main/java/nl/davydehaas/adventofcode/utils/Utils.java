@@ -9,9 +9,9 @@ import java.util.function.Supplier;
 
 public final class Utils {
     
-    public static void timeSolution(Supplier<Integer> supplier) {
+    public static void timeSolution(Supplier<Number> supplier) {
         long startTime = System.nanoTime();
-        int result = supplier.get();
+        Number result = supplier.get();
         long endTime = System.nanoTime();
         double duration = (endTime - startTime) / 1000000F;
         System.out.printf("""

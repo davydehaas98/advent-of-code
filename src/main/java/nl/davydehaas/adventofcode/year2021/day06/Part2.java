@@ -1,65 +1,74 @@
 package nl.davydehaas.adventofcode.year2021.day06;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
-public class Part2 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part2 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day06.txt");
+    
     public static void main(String[] args) {
+        timeSolution(Part2::calculate);
+    }
+    
+    static BigInteger calculate() {
         int days = 256;
         int internalTimer = 8;
         int resetInternalTimer = 6;
-        HashMap<Integer, BigInteger> lanternfishes = getLanternfishes(internalTimer);
-        BigInteger totalLanternfish = BigInteger.ZERO;
+        HashMap<Integer, BigInteger> lanternFishes = getLanternFishes(internalTimer);
+        BigInteger totalLanternFishes = BigInteger.ZERO;
         
         for (int i = 0; i < days; i++) {
-            BigInteger lanternfishInLaborAmount = BigInteger.ZERO;
+            BigInteger lanternFishInLaborAmount = BigInteger.ZERO;
             
-            for (int j = 0; j < lanternfishes.size(); j++) {
-                if (lanternfishes.containsKey(j)) {
-                    BigInteger lanternfishAmount = lanternfishes.get(j);
+            for (int j = 0; j < lanternFishes.size(); j++) {
+                if (lanternFishes.containsKey(j)) {
+                    BigInteger lanternfishAmount = lanternFishes.get(j);
                     if (j > 0) {
                         // Shift all fish from 1 to day 8 one down
-                        lanternfishes.put(j - 1, lanternfishAmount);
+                        lanternFishes.put(j - 1, lanternfishAmount);
                     } else {
                         // Save the amount of fish of day 0
-                        lanternfishInLaborAmount = lanternfishAmount;
+                        lanternFishInLaborAmount = lanternfishAmount;
                     }
                 }
             }
             // Make birth to new fish
             // Set internal timer of new fish
-            if (lanternfishes.containsKey(resetInternalTimer)) {
-                lanternfishes.put(resetInternalTimer, lanternfishes.get(resetInternalTimer).add(lanternfishInLaborAmount));
+            if (lanternFishes.containsKey(resetInternalTimer)) {
+                lanternFishes.put(resetInternalTimer, lanternFishes.get(resetInternalTimer).add(lanternFishInLaborAmount));
             } else {
-                lanternfishes.put(resetInternalTimer, lanternfishInLaborAmount);
+                lanternFishes.put(resetInternalTimer, lanternFishInLaborAmount);
             }
             // Reset internal timer of fish that gave birth.
-            lanternfishes.put(internalTimer, lanternfishInLaborAmount);
+            lanternFishes.put(internalTimer, lanternFishInLaborAmount);
         }
         
-        for (int i = 0; i < lanternfishes.size(); i++) {
-            totalLanternfish = totalLanternfish.add(lanternfishes.get(i));
+        for (int i = 0; i < lanternFishes.size(); i++) {
+            totalLanternFishes = totalLanternFishes.add(lanternFishes.get(i));
         }
         
-        System.out.printf("After %s days, the amount of lanternfish is:%n", days);
-        System.out.println(totalLanternfish);
+        return totalLanternFishes;
     }
     
-    private static HashMap<Integer, BigInteger> getLanternfishes(int internalTimer) {
-        HashMap<Integer, BigInteger> lanternfishes = new HashMap<>();
+    private static HashMap<Integer, BigInteger> getLanternFishes(int internalTimer) {
+        HashMap<Integer, BigInteger> lanternFishes = new HashMap<>();
         // Set up HashMap
         for (int i = 0; i < internalTimer; i++) {
-            lanternfishes.put(i, BigInteger.ZERO);
+            lanternFishes.put(i, BigInteger.ZERO);
         }
         
-        Arrays.stream(Utils.readFile("/year2021/day06.txt").get(0).split(","))
+        Arrays.stream(INPUT.get(0).split(","))
                 .map(Integer::parseInt)
                 .toList()
-                .forEach(timer -> lanternfishes.put(timer, lanternfishes.get(timer).add(BigInteger.ONE)));
+                .forEach(timer -> lanternFishes.put(timer, lanternFishes.get(timer).add(BigInteger.ONE)));
         
-        return lanternfishes;
+        return lanternFishes;
     }
 }

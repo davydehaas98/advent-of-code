@@ -1,13 +1,22 @@
 package nl.davydehaas.adventofcode.year2021.day04;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Part1 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part1 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day04.txt");
+    
     public static void main(String[] args) {
+        timeSolution(Part1::calculate);
+    }
+    
+    static int calculate() {
         List<Integer> calledNumbers = getCalledNumbers();
         List<List<Integer[]>> boards = getBoards();
         int score = 0;
@@ -38,8 +47,7 @@ public class Part1 {
             if (score > 0) break;
         }
         
-        System.out.println("The final score of the board that will win first is:");
-        System.out.println(score);
+        return score;
     }
     
     private static boolean checkBingo(List<Integer[]> board) {
@@ -70,7 +78,7 @@ public class Part1 {
     
     private static List<Integer> getCalledNumbers() {
         return Arrays
-                .stream(Utils.readFile("/year2021/day04.txt").get(0).split(","))
+                .stream(INPUT.get(0).split(","))
                 .map(Integer::parseInt)
                 .toList();
     }
@@ -79,10 +87,7 @@ public class Part1 {
         List<Integer[]> board = new ArrayList<>();
         List<List<Integer[]>> boards = new ArrayList<>();
         
-        List<String> lines = Utils.readFile("/year2021/day04.txt");
-        lines = lines.subList(1, lines.size());
-        
-        for (String line : lines) {
+        for (String line : INPUT.subList(1, INPUT.size())) {
             if (!line.isEmpty()) {
                 List<Integer> numbers = Arrays.stream(line.replace("  ", " ").split(" "))
                         .filter(string -> !string.isEmpty())

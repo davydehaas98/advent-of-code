@@ -1,40 +1,47 @@
 package nl.davydehaas.adventofcode.year2021.day06;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Part1 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part1 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day06.txt");
+    
     public static void main(String[] args) {
-        List<Integer> lanternfishes = new ArrayList<>(getLanternfishes());
+        timeSolution(Part1::calculate);
+    }
+    
+    static int calculate() {
+        List<Integer> lanternFishes = new ArrayList<>(getLanternFishes());
         int days = 80;
         int internalTimer = 8;
         int resetInternalTimer = 6;
         
         for (int i = 0; i < days; i++) {
-            int amount = lanternfishes.size();
+            int amount = lanternFishes.size();
             
             for (int j = 0; j < amount; j++) {
-                int lanternfish = lanternfishes.get(j);
+                int lanternFish = lanternFishes.get(j);
                 
-                if (lanternfish > 0) {
-                    lanternfishes.set(j, lanternfish - 1);
+                if (lanternFish > 0) {
+                    lanternFishes.set(j, lanternFish - 1);
                 } else {
-                    lanternfishes.set(j, resetInternalTimer);
-                    lanternfishes.add(internalTimer);
+                    lanternFishes.set(j, resetInternalTimer);
+                    lanternFishes.add(internalTimer);
                 }
             }
         }
         
-        System.out.printf("After %s days, the amount of lanternfish is:%n", days);
-        System.out.println(lanternfishes.size());
+        return lanternFishes.size();
     }
     
-    private static List<Integer> getLanternfishes() {
-        return Arrays
-                .stream(Utils.readFile("/year2021/day06.txt").get(0).split(","))
+    private static List<Integer> getLanternFishes() {
+        return Arrays.stream(INPUT.get(0).split(","))
                 .map(Integer::parseInt)
                 .toList();
     }

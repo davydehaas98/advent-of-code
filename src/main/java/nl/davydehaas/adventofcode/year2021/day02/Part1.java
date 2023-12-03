@@ -1,16 +1,24 @@
 package nl.davydehaas.adventofcode.year2021.day02;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.util.List;
 
-public class Part1 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part1 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day02.txt");
+    
     public static void main(String[] args) {
-        List<String> commands = getCommands();
+        timeSolution(Part1::calculate);
+    }
+    
+    static int calculate() {
         int depth = 0;
         int horizontalPosition = 0;
         
-        for (String command : commands) {
+        for (String command : INPUT) {
             String[] commandArray = command.split(" ");
             String action = commandArray[0];
             int units = Integer.parseInt(commandArray[1]);
@@ -22,13 +30,6 @@ public class Part1 {
             }
         }
         
-        int product = depth * horizontalPosition;
-        
-        System.out.println("The product of the depth and the horizontal position gives:");
-        System.out.println(product);
-    }
-    
-    private static List<String> getCommands() {
-        return Utils.readFile("/year2021/day02.txt");
+        return depth * horizontalPosition;
     }
 }

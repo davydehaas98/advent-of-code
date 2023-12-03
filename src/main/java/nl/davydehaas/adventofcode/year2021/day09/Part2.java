@@ -1,36 +1,45 @@
 package nl.davydehaas.adventofcode.year2021.day09;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Part2 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part2 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day09.txt");
+    
     private static int[][] heightMap;
-    static int sizeCounter;
+    private static int sizeCounter;
     
     public static void main(String[] args) {
+        timeSolution(Part2::calculate);
+    }
+    
+    static Number calculate() {
         heightMap = getHeightMap();
         List<Point> lowestPoints = new ArrayList<>();
         List<Integer> basins = new ArrayList<>();
         
-        for (int column = 0; column < heightMap.length; column++)
-            for (int row = 0; row < heightMap[0].length; row++)
-                if (isLowestPoint(column, row))
+        for (int column = 0; column < heightMap.length; column++) {
+            for (int row = 0; row < heightMap[0].length; row++) {
+                if (isLowestPoint(column, row)) {
                     lowestPoints.add(new Point(column, row));
+                }
+            }
+        }
         
         lowestPoints.forEach(point -> {
             sizeCounter = 0;
             basins.add(calculateBasinSize(point.x, point.y));
         });
         
-        int product = basins.stream().sorted().toList()
+        return basins.stream().sorted().toList()
                 .subList(basins.size() - 3, basins.size()).stream()
                 .reduce(1, Math::multiplyExact);
-        
-        System.out.println("The product of the three largest basins:");
-        System.out.println(product);
     }
     
     private static Integer calculateBasinSize(int column, int row) {
@@ -97,12 +106,11 @@ public class Part2 {
     }
     
     private static int[][] getHeightMap() {
-        List<String> lines = Utils.readFile("/year2021/day09.txt");
-        int[][] heightMap = new int[lines.size()][lines.get(0).length()];
+        int[][] heightMap = new int[INPUT.size()][INPUT.get(0).length()];
         
         for (int column = 0; column < heightMap[0].length; column++) {
             for (int row = 0; row < heightMap.length; row++) {
-                heightMap[row][column] = Integer.parseInt(String.valueOf(lines.get(row).charAt(column)));
+                heightMap[row][column] = Integer.parseInt(String.valueOf(INPUT.get(row).charAt(column)));
             }
         }
         return heightMap;

@@ -1,28 +1,32 @@
 package nl.davydehaas.adventofcode.year2021.day09;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.util.List;
 
-public class Part1 {
-    static int[][] heightMap;
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part1 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day09.txt");
+    
+    private static int[][] heightMap;
     
     public static void main(String[] args) {
-        heightMap = getHeightMap();
-        
-        int sum = sumRiskLevels();
-        
-        System.out.println("The sum of the risk levels of all low points is:");
-        System.out.println(sum);
+        timeSolution(Part1::calculate);
     }
     
-    private static int sumRiskLevels() {
+    static int calculate() {
+        heightMap = getHeightMap();
         int sum = 0;
         
-        for (int column = 0; column < heightMap.length; column++)
-            for (int row = 0; row < heightMap[0].length; row++)
-                if (isLowestPoint(column, row))
+        for (int column = 0; column < heightMap.length; column++) {
+            for (int row = 0; row < heightMap[0].length; row++) {
+                if (isLowestPoint(column, row)) {
                     sum += heightMap[column][row] + 1;
+                }
+            }
+        }
         
         return sum;
     }
@@ -55,12 +59,13 @@ public class Part1 {
     }
     
     private static int[][] getHeightMap() {
-        List<String> lines = Utils.readFile("/year2021/day09.txt");
-        int[][] heightMap = new int[lines.size()][lines.get(0).length()];
+        int[][] heightMap = new int[INPUT.size()][INPUT.get(0).length()];
         
-        for (int column = 0; column < heightMap[0].length; column++)
-            for (int row = 0; row < heightMap.length; row++)
-                heightMap[row][column] = Integer.parseInt(String.valueOf(lines.get(row).charAt(column)));
+        for (int column = 0; column < heightMap[0].length; column++) {
+            for (int row = 0; row < heightMap.length; row++) {
+                heightMap[row][column] = Integer.parseInt(String.valueOf(INPUT.get(row).charAt(column)));
+            }
+        }
         
         return heightMap;
     }

@@ -1,27 +1,35 @@
 package nl.davydehaas.adventofcode.year2021.day10;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Part2 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part2 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day10.txt");
+    
     public static void main(String[] args) {
-        List<String> navigationLines = getNavigationLines();
+        timeSolution(Part2::calculate);
+    }
+    
+    static Long calculate() {
         List<Long> points = new ArrayList<>();
         
-        navigationLines.forEach(line -> {
+        for (String line : INPUT) {
             line = removeValidChunks(line);
             // Check if line is not corrupted
             if (!line.contains(")") && !line.contains("]") && !line.contains("}") && !line.contains(">")) {
                 points.add(calculateIncompleteLinePoints(line));
             }
-        });
+        }
         
-        long middlePoints = points.stream().sorted().toList().get(points.size() / 2);
-        
-        System.out.println("The middle score is:");
-        System.out.println(middlePoints);
+        return points.stream()
+                .sorted()
+                .toList()
+                .get(points.size() / 2);
     }
     
     private static long calculateIncompleteLinePoints(String line) {
@@ -54,9 +62,5 @@ public class Part2 {
         }
         
         return navigationLine;
-    }
-    
-    private static List<String> getNavigationLines() {
-        return Utils.readFile("/year2021/day10.txt");
     }
 }

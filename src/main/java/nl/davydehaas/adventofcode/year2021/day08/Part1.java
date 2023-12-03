@@ -1,33 +1,34 @@
 package nl.davydehaas.adventofcode.year2021.day08;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Part1 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part1 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day08.txt");
+    
     public static void main(String[] args) {
+        timeSolution(Part1::calculate);
+    }
+    
+    static Number calculate() {
         List<String> outputValues = getOutputValues();
         
-        long digitCounter = outputValues
-                .stream()
-                .filter(string ->
-                        string.length() == 2 || string.length() == 3 || string.length() == 4 || string.length() == 7
-                ).count();
-        
-        System.out.println("The amount of appearances of digits 1, 4, 7 or 8 in the output values are:");
-        System.out.println(digitCounter);
+        return outputValues.stream()
+                .filter(string -> string.length() == 2
+                        || string.length() == 3
+                        || string.length() == 4
+                        || string.length() == 7)
+                .count();
     }
     
     private static List<String> getOutputValues() {
-        List<String> outputValues = new ArrayList<>();
-        
-        Utils.readFile("/year2021/day08.txt")
-                .forEach(line ->
-                        outputValues.addAll(Arrays.stream(line.split(" \\| ")[1].split(" ")).toList())
-                );
-        
-        return outputValues;
+        return INPUT.stream()
+                .flatMap(line -> Arrays.stream(line.split(" \\| ")[1].split(" ")))
+                .toList();
     }
 }

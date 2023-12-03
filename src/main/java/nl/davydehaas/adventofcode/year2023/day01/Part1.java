@@ -6,7 +6,7 @@ import java.util.List;
 
 import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
 
-public class Part1 extends Year2023 {
+class Part1 extends Year2023 {
     
     private static final List<String> INPUT = readFile("/day01.txt");
     
@@ -18,8 +18,20 @@ public class Part1 extends Year2023 {
         int sum = 0;
         
         for (String line : INPUT) {
-            line = line.replaceAll("[(\\D)]", "");
-            sum += Integer.parseInt(line.charAt(0) + "" + line.charAt(line.length() - 1));
+            StringBuilder number = new StringBuilder();
+            for (int i = 0; i < line.length(); i++) {
+                if (Character.isDigit(line.charAt(i))) {
+                    number.append(line.charAt(i));
+                    break;
+                }
+            }
+            for (int i = line.length() - 1; i > -1; i--) {
+                if (Character.isDigit(line.charAt(i))) {
+                    number.append(line.charAt(i));
+                    break;
+                }
+            }
+            sum += Integer.parseInt(number.toString());
         }
         
         return sum;

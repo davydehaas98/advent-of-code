@@ -1,14 +1,25 @@
 package nl.davydehaas.adventofcode.year2021.day12;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class Part1 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part1 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day12.txt");
+    
     public static void main(String[] args) {
+        timeSolution(Part1::calculate);
+    }
+    
+    
+    static int calculate() {
         Set<String[]> connections = getConnections();
         List<Cave> caves = getCaves(connections);
         List<List<Cave>> paths = new ArrayList<>();
@@ -18,8 +29,7 @@ public class Part1 {
         
         calculatePath(startPoint, endPoint);
         
-        System.out.println("The total paths that go through the caves and visit the small caves at most once is:");
-        System.out.println(caves);
+        return caves.size();
     }
     
     private static List<Cave> getCaves(Set<String[]> connections) {
@@ -54,18 +64,13 @@ public class Part1 {
     }
     
     private static Set<String[]> getConnections() {
-        Set<String[]> connections = new LinkedHashSet<>();
-        
-        Utils.readFile("/year2021/day12-test.txt")
-                .forEach(line -> {
-                    String[] connection = line.split("-");
-                    connections.add(connection);
-                });
-        
-        return connections;
+        return INPUT.stream()
+                .map(line -> line.split("-"))
+                .collect(Collectors.toSet());
     }
     
     static class Cave {
+        
         final String name;
         final boolean big;
         final Set<Cave> connections = new LinkedHashSet<>();

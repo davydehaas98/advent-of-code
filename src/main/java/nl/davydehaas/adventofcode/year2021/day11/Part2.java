@@ -1,15 +1,25 @@
 package nl.davydehaas.adventofcode.year2021.day11;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Part2 {
-    static int[][] octopuses;
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part2 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day11.txt");
+    
+    private static int[][] octopuses;
     
     public static void main(String[] args) {
+        timeSolution(Part2::calculate);
+    }
+    
+    
+    static int calculate() {
         octopuses = getOctopuses();
         int stepCounter = 0;
         
@@ -17,24 +27,18 @@ public class Part2 {
             stepCounter++;
         } while (simulateStep() < octopuses.length * octopuses[0].length);
         
-        System.out.println("The first step where all the octopuses flash simultaniously is:");
-        System.out.println(stepCounter);
+        return stepCounter;
     }
     
-    private static void flashOctopus(int column, int row, List<Point> flashedOctopuses) {
-        if (octopuses[column][row] > 9 && !flashedOctopuses.contains(new Point(column, row))) {
-            flashedOctopuses.add(new Point(column, row));
-            
-            for (int i = -1; i < 2; i++) {
-                for (int j = -1; j < 2; j++) {
-                    try {
-                        octopuses[column + i][row + j] += 1;
-                        flashOctopus(column + i, row + j, flashedOctopuses);
-                    } catch (IndexOutOfBoundsException ignored) {
-                    }
-                }
+    private static int[][] getOctopuses() {
+        int[][] octopuses = new int[INPUT.size()][INPUT.get(0).length()];
+        
+        for (int column = 0; column < octopuses[0].length; column++) {
+            for (int row = 0; row < octopuses.length; row++) {
+                octopuses[row][column] = Integer.parseInt(String.valueOf(INPUT.get(row).charAt(column)));
             }
         }
+        return octopuses;
     }
     
     private static int simulateStep() {
@@ -58,15 +62,19 @@ public class Part2 {
         return flashedOctopuses.size();
     }
     
-    private static int[][] getOctopuses() {
-        List<String> lines = Utils.readFile("/year2021/day11.txt");
-        int[][] octopuses = new int[lines.size()][lines.get(0).length()];
-        
-        for (int column = 0; column < octopuses[0].length; column++) {
-            for (int row = 0; row < octopuses.length; row++) {
-                octopuses[row][column] = Integer.parseInt(String.valueOf(lines.get(row).charAt(column)));
+    private static void flashOctopus(int column, int row, List<Point> flashedOctopuses) {
+        if (octopuses[column][row] > 9 && !flashedOctopuses.contains(new Point(column, row))) {
+            flashedOctopuses.add(new Point(column, row));
+            
+            for (int i = -1; i < 2; i++) {
+                for (int j = -1; j < 2; j++) {
+                    try {
+                        octopuses[column + i][row + j] += 1;
+                        flashOctopus(column + i, row + j, flashedOctopuses);
+                    } catch (IndexOutOfBoundsException ignored) {
+                    }
+                }
             }
         }
-        return octopuses;
     }
 }

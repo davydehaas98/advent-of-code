@@ -5,17 +5,18 @@ import nl.davydehaas.adventofcode.year2020.Year2020;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Part2 extends Year2020 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part2 extends Year2020 {
+    
+    private static final List<String> INPUT = readFile("/day02.txt");
     
     public static void main(String[] args) {
-        Integer result = calculate();
-        System.out.println("The amount of valid passwords is:");
-        System.out.println(result);
+        timeSolution(Part2::calculate);
     }
     
     static Integer calculate() {
-        List<String> input = readFile("/day02.txt");
-        List<String[]> policies = getPolicies(input);
+        List<String[]> policies = getPolicies();
         int validPasswordCounter = 0;
         
         for (String[] policy : policies) {
@@ -34,10 +35,10 @@ public class Part2 extends Year2020 {
         return validPasswordCounter;
     }
     
-    private static List<String[]> getPolicies(List<String> input) {
+    private static List<String[]> getPolicies() {
         List<String[]> policies = new ArrayList<>();
         
-        for (String line : input) {
+        for (String line : INPUT) {
             String[] lineArray = line.split(": ");
             String password = lineArray[1];
             

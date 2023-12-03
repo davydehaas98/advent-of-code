@@ -1,19 +1,27 @@
 package nl.davydehaas.adventofcode.year2021.day01;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Part2 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part2 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day01.txt");
+    
     public static void main(String[] args) {
-        List<Integer> measurements = getMeasurements();
+        timeSolution(Part2::calculate);
+    }
+    
+    static int calculate() {
+        List<Integer> measurements = INPUT.stream()
+                .map(Integer::parseInt)
+                .toList();
         List<Integer> slidingWindows = getSlidingWindows(measurements);
         
-        int largerMeasurements = countLargerMeasurements(slidingWindows);
-        
-        System.out.println("Amount of measurements that are larger than the previous measurement:");
-        System.out.println(largerMeasurements);
+        return countLargerMeasurements(slidingWindows);
     }
     
     private static List<Integer> getSlidingWindows(List<Integer> measurements) {
@@ -47,11 +55,5 @@ public class Part2 {
         }
         
         return largerMeasurementCounter;
-    }
-    
-    private static List<Integer> getMeasurements() {
-        return Utils.readFile("/year2021/day01.txt").stream()
-                .map(Integer::parseInt)
-                .toList();
     }
 }

@@ -1,6 +1,6 @@
 package nl.davydehaas.adventofcode.year2021.day05;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -8,8 +8,17 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Part1 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part1 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day05.txt");
+    
     public static void main(String[] args) {
+        timeSolution(Part1::calculate);
+    }
+    
+    static int calculate() {
         List<Point[]> lines = getLines();
         LinkedHashMap<Point, Integer> vents = new LinkedHashMap<>();
         int dangerousAreaCounter = 0;
@@ -31,8 +40,7 @@ public class Part1 {
             }
         }
         
-        System.out.println("The number of points where at least two lines overlap is:");
-        System.out.println(dangerousAreaCounter);
+        return dangerousAreaCounter;
     }
     
     private static void createHorizontalVent(Point startPoint, Point endPoint, LinkedHashMap<Point, Integer> vents) {
@@ -77,7 +85,7 @@ public class Part1 {
     private static List<Point[]> getLines() {
         List<Point[]> lines = new ArrayList<>();
         
-        Utils.readFile("/year2021/day05.txt").forEach(fileLine -> lines.add(new Point[]{
+        INPUT.forEach(fileLine -> lines.add(new Point[]{
                 new Point(
                         Integer.parseInt(fileLine.split(" -> ")[0].split(",")[0]),
                         Integer.parseInt(fileLine.split(" -> ")[0].split(",")[1])

@@ -1,14 +1,23 @@
 package nl.davydehaas.adventofcode.year2021.day08;
 
-import nl.davydehaas.adventofcode.utils.Utils;
+import nl.davydehaas.adventofcode.year2021.Year2021;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Part2 {
+import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+
+class Part2 extends Year2021 {
+    
+    private static final List<String> INPUT = readFile("/day08.txt");
+    
     public static void main(String[] args) {
+        timeSolution(Part2::calculate);
+    }
+    
+    static Number calculate() {
         List<String[]> signalPatterns = getSignalPatterns();
         List<String[]> outputValues = getOutputValues();
         int outputValueSum = 0;
@@ -32,8 +41,7 @@ public class Part2 {
             outputValueSum += Integer.parseInt(digitString.toString());
         }
         
-        System.out.println("The sum of all the output values is:");
-        System.out.println(outputValueSum);
+        return outputValueSum;
     }
     
     private static String[] decodeSignalPattern(String[] signalPattern) {
@@ -108,7 +116,7 @@ public class Part2 {
             if (digits[2] == null || digits[5] == null) {
                 String remainingCharacters = signal;
                 
-                assert digits[9] != null; 
+                assert digits[9] != null;
                 for (char character : digits[9].toCharArray()) {
                     remainingCharacters = remainingCharacters.replaceFirst(String.valueOf(character), "");
                 }
@@ -133,24 +141,19 @@ public class Part2 {
         for (int i = 0; i < one.length(); i++)
             characters.add(one.charAt(i));
         
-        return characters.stream().allMatch(character -> two.contains(character.toString()));
+        return characters.stream()
+                .allMatch(character -> two.contains(character.toString()));
     }
     
     private static List<String[]> getOutputValues() {
-        List<String[]> outputValues = new ArrayList<>();
-        
-        Utils.readFile("/year2021/day08.txt")
-                .forEach(line -> outputValues.add(line.split(" \\| ")[1].split(" ")));
-        
-        return outputValues;
+        return INPUT.stream()
+                .map(line -> line.split(" \\| ")[1].split(" "))
+                .toList();
     }
     
     private static List<String[]> getSignalPatterns() {
-        List<String[]> signalPatterns = new ArrayList<>();
-        
-        Utils.readFile("/year2021/day08.txt")
-                .forEach(line -> signalPatterns.add(line.split(" \\| ")[0].split(" ")));
-        
-        return signalPatterns;
+        return INPUT.stream()
+                .map(line -> line.split(" \\| ")[0].split(" "))
+                .toList();
     }
 }
