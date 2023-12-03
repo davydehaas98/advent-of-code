@@ -6,7 +6,7 @@ import java.util.List;
 
 import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
 
-public class Part1 extends Year2023 {
+class Part1 extends Year2023 {
     
     private static final List<String> INPUT = readFile("/day03.txt");
     
@@ -35,8 +35,7 @@ public class Part1 extends Year2023 {
             for (int x = 0; x < size; x++) {
                 if (Character.isDigit(engine[y][x])) {
                     number.append(engine[y][x]);
-                }
-                else if (!number.isEmpty()) {
+                } else if (!number.isEmpty()) {
                     if (isPartNumber(x - number.length(), x - 1, y, engine)) {
                         sum += Integer.parseInt(number.toString());
                     }
@@ -48,8 +47,9 @@ public class Part1 extends Year2023 {
         return sum;
     }
     
-    private static boolean isPartNumber(int x1, int x2, int y, char[][] engine) {
-        int left = x1 - 1;
+    private static boolean isPartNumber(int xLeft, int xRight, int y, char[][] engine) {
+        // Left
+        int left = xLeft - 1;
         if (engine[y - 1][left] != '.') {
             return true;
         }
@@ -59,8 +59,8 @@ public class Part1 extends Year2023 {
         if (engine[y + 1][left] != '.') {
             return true;
         }
-        
-        int right = x2 + 1;
+        // Right
+        int right = xRight + 1;
         if (engine[y - 1][right] != '.') {
             return true;
         }
@@ -70,11 +70,13 @@ public class Part1 extends Year2023 {
         if (engine[y + 1][right] != '.') {
             return true;
         }
-        
-        for (int x = x1; x < x2 + 1; x++) {
+        // Middle
+        for (int x = xLeft; x < xRight + 1; x++) {
+            // Above
             if (engine[y - 1][x] != '.') {
                 return true;
             }
+            // Below
             if (engine[y + 1][x] != '.') {
                 return true;
             }

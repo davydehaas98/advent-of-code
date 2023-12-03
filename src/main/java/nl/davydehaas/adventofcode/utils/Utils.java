@@ -18,20 +18,8 @@ public final class Utils {
                 Result:
                 %s
                 Duration (ms):
-                %s""", result, duration);
-    }
-    
-    public static void timeSolution(Runnable runnable) throws InterruptedException {
-        Thread thread = new Thread(runnable);
-        long startTime = System.nanoTime();
-        
-        thread.start();
-        thread.join();
-        
-        long endTime = System.nanoTime();
-        double duration = (endTime - startTime) / 1000000F;
-        
-        System.out.println(duration + " ms");
+                %s
+                """, result, duration);
     }
     
     public static List<String> readFile(String pathName) {
