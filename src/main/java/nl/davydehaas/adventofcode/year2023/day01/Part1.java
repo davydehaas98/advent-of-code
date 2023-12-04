@@ -18,20 +18,19 @@ class Part1 extends Year2023 {
         int sum = 0;
         
         for (String line : INPUT) {
-            StringBuilder number = new StringBuilder();
+            char firstNumber = '0';
             for (int i = 0; i < line.length(); i++) {
                 if (Character.isDigit(line.charAt(i))) {
-                    number.append(line.charAt(i));
+                    firstNumber = line.charAt(i);
                     break;
                 }
             }
             for (int i = line.length() - 1; i > -1; i--) {
                 if (Character.isDigit(line.charAt(i))) {
-                    number.append(line.charAt(i));
+                    sum += Integer.parseInt(firstNumber + "" + line.charAt(i));
                     break;
                 }
             }
-            sum += Integer.parseInt(number.toString());
         }
         
         return sum;

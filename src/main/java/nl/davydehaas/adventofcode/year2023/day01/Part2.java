@@ -18,24 +18,46 @@ class Part2 extends Year2023 {
         int sum = 0;
         
         for (String line : INPUT) {
-            line = transformSpelledDigit(line);
-            line = line.replaceAll("[(\\D)]", "");
-            sum += Integer.parseInt(line.charAt(0) + "" + line.charAt(line.length() - 1));
+            Character firstNumber = null;
+            for (int i = 0; i < line.length(); i++) {
+                if (Character.isDigit(line.charAt(i))) {
+                    firstNumber = line.charAt(i);
+                    break;
+                } else {
+                    firstNumber = isSpelledDigit(line.substring(0, i + 1));
+                    if (firstNumber != null) {
+                        break;
+                    }
+                }
+            }
+            Character lastNumber = null;
+            for (int i = line.length() - 1; i > -1; i--) {
+                if (Character.isDigit(line.charAt(i))) {
+                    lastNumber = line.charAt(i);
+                    break;
+                } else {
+                    lastNumber = isSpelledDigit(line.substring(i));
+                    if (lastNumber != null) {
+                        break;
+                    }
+                }
+            }
+            sum += Integer.parseInt(firstNumber + "" + lastNumber);
         }
         
         return sum;
     }
     
-    private static String transformSpelledDigit(String line) {
-        return line
-                .replaceAll("one", "o1e")
-                .replaceAll("two", "t2o")
-                .replaceAll("three", "t3e")
-                .replaceAll("four", "f4r")
-                .replaceAll("five", "f5e")
-                .replaceAll("six", "s6x")
-                .replaceAll("seven", "s7n")
-                .replaceAll("eight", "e8t")
-                .replaceAll("nine", "n9e");
+    private static Character isSpelledDigit(String spelledDigit) {
+        if (spelledDigit.contains("one")) return '1';
+        if (spelledDigit.contains("two")) return '2';
+        if (spelledDigit.contains("three")) return '3';
+        if (spelledDigit.contains("four")) return '4';
+        if (spelledDigit.contains("five")) return '5';
+        if (spelledDigit.contains("six")) return '6';
+        if (spelledDigit.contains("seven")) return '7';
+        if (spelledDigit.contains("eight")) return '8';
+        if (spelledDigit.contains("nine")) return '9';
+        return null;
     }
 }
