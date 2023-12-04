@@ -71,12 +71,19 @@
                                 <goals>
                                     <goal>prepare-agent</goal>
                                 </goals>
+                                <configuration>
+                                    <append>true</append>
+                                    <destFile>${project.build.directory}/jacoco.exec</destFile>
+                                </configuration>
                             </execution>
                             <execution>
                                 <id>report</id>
                                 <goals>
                                     <goal>report</goal>
                                 </goals>
+                                <configuration>
+                                    <formats>XML</formats>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
