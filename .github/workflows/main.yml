@@ -14,4 +14,4 @@ jobs:
           java-version: '21'
           java-package: 'jdk'
           cache: maven
-      - run: mvn clean verify sonar:sonar
+      - run: mvn clean verify
