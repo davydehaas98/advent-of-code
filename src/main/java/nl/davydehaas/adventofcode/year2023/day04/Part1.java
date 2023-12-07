@@ -1,14 +1,13 @@
 package nl.davydehaas.adventofcode.year2023.day04;
 
-import nl.davydehaas.adventofcode.year2023.Year2023;
-
 import java.util.List;
 
-import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
-class Part1 extends Year2023 {
+class Part1 {
     
-    private static final List<String> INPUT = readFile("/day04.txt");
+    private static final List<String> INPUT = readFile(2023, 4);
     
     public static void main(String[] args) {
         timeSolution(Part1::calculate);

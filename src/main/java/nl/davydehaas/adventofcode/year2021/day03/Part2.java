@@ -1,15 +1,14 @@
 package nl.davydehaas.adventofcode.year2021.day03;
 
-import nl.davydehaas.adventofcode.year2021.Year2021;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
-class Part2 extends Year2021 {
+class Part2 {
     
-    private static final List<String> INPUT = readFile("/day03.txt");
+    private static final List<String> INPUT = readFile(2021, 3);
     
     public static void main(String[] args) {
         timeSolution(Part2::calculate);
@@ -19,7 +18,7 @@ class Part2 extends Year2021 {
         List<String> binaryNumbers = INPUT;
         List<String> oxygenGeneratorRatings = binaryNumbers;
         List<String> co2ScrubberRatings = binaryNumbers;
-        int bits = binaryNumbers.get(0).length();
+        int bits = binaryNumbers.getFirst().length();
         
         for (int i = 0; i < bits; i++) {
             if (oxygenGeneratorRatings.size() > 1) {
@@ -73,8 +72,8 @@ class Part2 extends Year2021 {
             }
         }
         
-        int oxygenGeneratorRating = Integer.parseInt(oxygenGeneratorRatings.get(0), 2);
-        int co2ScrubberRating = Integer.parseInt(co2ScrubberRatings.get(0), 2);
+        int oxygenGeneratorRating = Integer.parseInt(oxygenGeneratorRatings.getFirst(), 2);
+        int co2ScrubberRating = Integer.parseInt(co2ScrubberRatings.getFirst(), 2);
         return oxygenGeneratorRating * co2ScrubberRating;
     }
 }

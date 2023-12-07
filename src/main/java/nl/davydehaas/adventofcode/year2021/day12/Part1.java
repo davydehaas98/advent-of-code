@@ -1,18 +1,17 @@
 package nl.davydehaas.adventofcode.year2021.day12;
 
-import nl.davydehaas.adventofcode.year2021.Year2021;
-
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
-class Part1 extends Year2021 {
+class Part1 {
     
-    private static final List<String> INPUT = readFile("/day12.txt");
+    private static final List<String> INPUT = readFile(2021, 12);
     
     public static void main(String[] args) {
         timeSolution(Part1::calculate);
@@ -74,7 +73,7 @@ class Part1 extends Year2021 {
         final String name;
         final boolean big;
         final Set<Cave> connections = new LinkedHashSet<>();
-    
+        
         public Cave(String name) {
             this.name = name;
             this.big = Character.isUpperCase(name.charAt(0));
@@ -83,11 +82,11 @@ class Part1 extends Year2021 {
         public String getName() {
             return name;
         }
-    
+        
         public boolean isBig() {
             return big;
         }
-    
+        
         public Set<Cave> getConnections() {
             return connections;
         }

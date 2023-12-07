@@ -1,17 +1,16 @@
 package nl.davydehaas.adventofcode.year2021.day04;
 
-import nl.davydehaas.adventofcode.year2021.Year2021;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
-class Part2 extends Year2021 {
+class Part2 {
     
-    private static final List<String> INPUT = readFile("/day04.txt");
+    private static final List<String> INPUT = readFile(2021, 4);
     
     public static void main(String[] args) {
         timeSolution(Part2::calculate);
@@ -36,7 +35,7 @@ class Part2 extends Year2021 {
                             if (boards.size() == 1) {
                                 int sum = 0;
                                 // Calculate sum of all unmarked numbers
-                                for (Integer[] numbers : boards.get(0)) {
+                                for (Integer[] numbers : boards.getFirst()) {
                                     if (numbers[1] == 0) {
                                         sum = sum + numbers[0];
                                     }
@@ -85,8 +84,7 @@ class Part2 extends Year2021 {
     }
     
     private static List<Integer> getCalledNumbers() {
-        return Arrays
-                .stream(INPUT.get(0).split(","))
+        return Arrays.stream(INPUT.getFirst().split(","))
                 .map(Integer::parseInt)
                 .toList();
     }

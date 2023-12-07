@@ -1,14 +1,13 @@
 package nl.davydehaas.adventofcode.year2023.day02;
 
-import nl.davydehaas.adventofcode.year2023.Year2023;
-
 import java.util.List;
 
-import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
-class Part1 extends Year2023 {
+class Part1 {
     
-    private static final List<String> INPUT = readFile("/day02.txt");
+    private static final List<String> INPUT = readFile(2023, 2);
     
     private static final int MAX_RED_CUBES = 12;
     private static final int MAX_GREEN_CUBES = 13;

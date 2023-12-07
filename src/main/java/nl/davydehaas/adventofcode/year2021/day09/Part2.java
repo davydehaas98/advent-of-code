@@ -1,16 +1,15 @@
 package nl.davydehaas.adventofcode.year2021.day09;
 
-import nl.davydehaas.adventofcode.year2021.Year2021;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static nl.davydehaas.adventofcode.utils.Utils.timeSolution;
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
-class Part2 extends Year2021 {
+class Part2 {
     
-    private static final List<String> INPUT = readFile("/day09.txt");
+    private static final List<String> INPUT = readFile(2021, 9);
     
     private static int[][] heightMap;
     private static int sizeCounter;
@@ -106,7 +105,7 @@ class Part2 extends Year2021 {
     }
     
     private static int[][] getHeightMap() {
-        int[][] heightMap = new int[INPUT.size()][INPUT.get(0).length()];
+        int[][] heightMap = new int[INPUT.size()][INPUT.getFirst().length()];
         
         for (int column = 0; column < heightMap[0].length; column++) {
             for (int row = 0; row < heightMap.length; row++) {
