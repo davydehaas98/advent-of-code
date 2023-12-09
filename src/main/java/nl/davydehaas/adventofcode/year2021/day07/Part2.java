@@ -11,10 +11,10 @@ class Part2 {
     private static final List<String> INPUT = readFile(2021, 7);
     
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
     
-    static int calculate() {
+    static int solve() {
         List<Integer> crabPositions = getCrabPositions();
         int bestCost = Integer.MAX_VALUE;
         // Try each position

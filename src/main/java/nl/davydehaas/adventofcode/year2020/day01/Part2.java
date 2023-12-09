@@ -12,10 +12,10 @@ class Part2 {
     private static final int TARGET = 2020;
     
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
     
-    static int calculate() {
+    static int solve() {
         int[] expenses = INPUT.stream()
                 .mapToInt(Integer::parseInt)
                 .toArray();

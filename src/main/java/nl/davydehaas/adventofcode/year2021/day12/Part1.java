@@ -14,11 +14,11 @@ class Part1 {
     private static final List<String> INPUT = readFile(2021, 12);
     
     public static void main(String[] args) {
-        timeSolution(Part1::calculate);
+        timeSolution(Part1::solve);
     }
     
     
-    static int calculate() {
+    static int solve() {
         Set<String[]> connections = getConnections();
         List<Cave> caves = getCaves(connections);
         List<List<Cave>> paths = new ArrayList<>();

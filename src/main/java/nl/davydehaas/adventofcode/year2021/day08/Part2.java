@@ -13,10 +13,10 @@ class Part2 {
     private static final List<String> INPUT = readFile(2021, 8);
     
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
     
-    static Number calculate() {
+    static int solve() {
         List<String[]> signalPatterns = getSignalPatterns();
         List<String[]> outputValues = getOutputValues();
         int outputValueSum = 0;

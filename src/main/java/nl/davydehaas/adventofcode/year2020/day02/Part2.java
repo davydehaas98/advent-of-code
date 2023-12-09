@@ -11,10 +11,10 @@ class Part2 {
     private static final List<String> INPUT = readFile(2020, 2);
     
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
     
-    static Integer calculate() {
+    static Integer solve() {
         List<String[]> policies = getPolicies();
         int validPasswordCounter = 0;
         

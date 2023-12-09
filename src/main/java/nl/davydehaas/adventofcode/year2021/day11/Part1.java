@@ -14,10 +14,10 @@ class Part1 {
     private static int[][] octopuses;
     
     public static void main(String[] args) {
-        timeSolution(Part1::calculate);
+        timeSolution(Part1::solve);
     }
     
-    static int calculate() {
+    static int solve() {
         octopuses = getOctopuses();
         int steps = 100;
         int flashCounter = 0;

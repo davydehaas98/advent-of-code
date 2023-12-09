@@ -11,10 +11,10 @@ class Part2 {
     private static final List<String> INPUT = readFile(2023, 3);
     
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
     
-    static int calculate() {
+    static int solve() {
         int size = INPUT.size() + 2;
         char[][] engine = new char[size][size];
         for (int y = 0; y < size; y++) {

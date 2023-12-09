@@ -11,10 +11,10 @@ class Part1 {
     private static final List<String> INPUT = readFile(2023, 5);
     
     public static void main(String[] args) {
-        timeSolution(Part1::calculate);
+        timeSolution(Part1::solve);
     }
     
-    static long calculate() {
+    static long solve() {
         String[] seeds = INPUT.getFirst()
                 .substring(7)
                 .split(" ");

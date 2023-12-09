@@ -12,10 +12,10 @@ class Part1 {
     private static final List<String> INPUT = readFile(2021, 6);
     
     public static void main(String[] args) {
-        timeSolution(Part1::calculate);
+        timeSolution(Part1::solve);
     }
     
-    static int calculate() {
+    static int solve() {
         List<Integer> lanternFishes = new ArrayList<>(getLanternFishes());
         int days = 80;
         int internalTimer = 8;

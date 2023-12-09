@@ -14,7 +14,7 @@ class Part2 {
     private static int MAX_BLUE_CUBES = 0;
     
     public static void main(String[] args) {
-        timeSolution(Part1::calculate);
+        timeSolution(Part1::solve);
     }
     
     static int calculate() {

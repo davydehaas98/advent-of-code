@@ -11,10 +11,10 @@ class Part1 {
     private static final List<String> INPUT = readFile(2021, 8);
     
     public static void main(String[] args) {
-        timeSolution(Part1::calculate);
+        timeSolution(Part1::solve);
     }
     
-    static Number calculate() {
+    static long solve() {
         List<String> outputValues = getOutputValues();
         
         return outputValues.stream()

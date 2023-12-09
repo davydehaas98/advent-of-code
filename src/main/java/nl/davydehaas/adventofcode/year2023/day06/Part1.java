@@ -11,10 +11,10 @@ class Part1 {
     private static final List<String> INPUT = readFile(2023, 6);
     
     public static void main(String[] args) {
-        timeSolution(Part1::calculate);
+        timeSolution(Part1::solve);
     }
     
-    static int calculate() {
+    static int solve() {
         int[] time = Arrays.stream(INPUT.get(0).split(":\\s+")[1].split("\\s+"))
                 .mapToInt(Integer::parseInt)
                 .toArray();

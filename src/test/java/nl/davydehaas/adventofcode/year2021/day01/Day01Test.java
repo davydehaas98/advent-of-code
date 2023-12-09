@@ -7,7 +7,7 @@ public class Day01Test {
     
     @Test
     void part1Test() {
-        int result = Part1.calculate();
+        int result = Part1.solve();
         Assertions.assertThat(result)
                 .isEqualTo(1676);
     }

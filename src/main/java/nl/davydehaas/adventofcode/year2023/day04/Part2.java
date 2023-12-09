@@ -10,10 +10,10 @@ class Part2 {
     private static final List<String> INPUT = readFile(2023, 4);
     
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
     
-    static int calculate() {
+    static int solve() {
         int[] totalCardsWon = new int[INPUT.size()];
         int sum = 0;
         for (int currentCard = 0; currentCard < INPUT.size(); currentCard++) {

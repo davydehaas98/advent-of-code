@@ -11,10 +11,10 @@ class Part2 {
     private static final List<String> INPUT = readFile(2021, 10);
     
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
     
-    static Long calculate() {
+    static Long solve() {
         List<Long> points = new ArrayList<>();
         
         for (String line : INPUT) {

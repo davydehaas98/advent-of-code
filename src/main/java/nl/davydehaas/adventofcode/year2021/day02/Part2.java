@@ -10,10 +10,10 @@ class Part2 {
     private static final List<String> INPUT = readFile(2021, 2);
     
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
     
-    static int calculate() {
+    static int solve() {
         int aim = 0;
         int depth = 0;
         int horizontalPosition = 0;

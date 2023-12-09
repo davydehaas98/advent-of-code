@@ -7,14 +7,14 @@ class Day04Test {
     
     @Test
     void part1Test() {
-        int result = Part1.calculate();
+        int result = Part1.solve();
         Assertions.assertThat(result)
                 .isEqualTo(20667);
     }
     
     @Test
     void part2Test() {
-        int result = Part2.calculate();
+        int result = Part2.solve();
         Assertions.assertThat(result)
                 .isEqualTo(5833065);
     }

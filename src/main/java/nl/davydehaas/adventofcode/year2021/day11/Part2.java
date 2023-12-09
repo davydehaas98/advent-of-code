@@ -14,11 +14,11 @@ class Part2 {
     private static int[][] octopuses;
     
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
     
     
-    static int calculate() {
+    static int solve() {
         octopuses = getOctopuses();
         int stepCounter = 0;
         

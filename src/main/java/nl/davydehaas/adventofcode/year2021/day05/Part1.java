@@ -14,10 +14,10 @@ class Part1 {
     private static final List<String> INPUT = readFile(2021, 5);
     
     public static void main(String[] args) {
-        timeSolution(Part1::calculate);
+        timeSolution(Part1::solve);
     }
     
-    static int calculate() {
+    static int solve() {
         List<Point[]> lines = getLines();
         LinkedHashMap<Point, Integer> vents = new LinkedHashMap<>();
         int dangerousAreaCounter = 0;

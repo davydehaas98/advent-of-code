@@ -11,10 +11,10 @@ class Part2 {
     private static final List<String> INPUT = readFile(2021, 3);
     
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
     
-    static int calculate() {
+    static int solve() {
         List<String> binaryNumbers = INPUT;
         List<String> oxygenGeneratorRatings = binaryNumbers;
         List<String> co2ScrubberRatings = binaryNumbers;

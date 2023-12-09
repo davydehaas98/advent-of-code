@@ -13,10 +13,10 @@ class Part2 {
     private static final List<String> INPUT = readFile(2021, 4);
     
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
     
-    static int calculate() {
+    static int solve() {
         List<Integer> calledNumbers = getCalledNumbers();
         List<List<Integer[]>> boards = getBoards();
         int score = 0;

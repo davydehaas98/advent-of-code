@@ -15,10 +15,10 @@ class Part2 {
     private static int sizeCounter;
     
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
     
-    static Number calculate() {
+    static int solve() {
         heightMap = getHeightMap();
         List<Point> lowestPoints = new ArrayList<>();
         List<Integer> basins = new ArrayList<>();

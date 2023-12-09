@@ -10,10 +10,10 @@ class Part1 {
     private static final List<String> INPUT = readFile(2023, 1);
     
     public static void main(String[] args) {
-        timeSolution(Part1::calculate);
+        timeSolution(Part1::solve);
     }
     
-    static int calculate() {
+    static int solve() {
         int sum = 0;
         
         for (String line : INPUT) {
