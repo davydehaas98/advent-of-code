@@ -20,7 +20,7 @@ jobs:
       - name: Run mvn clean verify
         run: mvn clean verify
       - name: Publish Surefire test report
-        uses: dorny/test-reporter@v1.0.0
+        uses: dorny/test-reporter@31a54ee7ebcacc03a09ea97a7e5465a47b84aea5 # v1.9.1
         if: always()
         with:
           name: Surefire Tests  
