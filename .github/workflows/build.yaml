@@ -20,4 +20,4 @@ jobs:
       - name: Run mvn clean verify
         run: mvn clean verify
       - name: Publish Surefire test report
-        uses: scacap/action-surefire-report@v1.0.0
+        uses: scacap/action-surefire-report@a2911bd1a4412ec18dde2d93b1758b3e56d2a880 # v1.8.0
