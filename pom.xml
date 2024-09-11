@@ -6,16 +6,16 @@
 
     <groupId>nl.davydehaas</groupId>
     <artifactId>advent-of-code</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
     <name>Advent of Code</name>
     <description>Code written for Advent of Code</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <java.version>21</java.version>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
+        <java.version>23</java.version>
 
         <assertj.version>3.26.3</assertj.version>
         <jacoco.version>0.8.12</jacoco.version>
