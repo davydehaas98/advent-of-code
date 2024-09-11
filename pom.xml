@@ -40,7 +40,7 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
+        <plugins>
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -58,7 +58,7 @@
                     <version>${jacoco.version}</version>
                 </plugin>
             </plugins>
-        </pluginManagement>
+        </plugins>
     </build>
 
     <profiles>
