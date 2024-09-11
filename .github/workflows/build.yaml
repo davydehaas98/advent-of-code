@@ -17,5 +17,7 @@ jobs:
           java-version: '22'
           java-package: 'jdk'
           cache: maven
-      - name: Maven clean verify
+      - name: Run mvn clean verify
         run: mvn clean verify
+      - name: Publish Surefire test report
+        uses: scacap/action-surefire-report@v1.0.0
