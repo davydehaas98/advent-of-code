@@ -1,4 +1,4 @@
-package nl.davydehaas.adventofcode.year2015.day00;
+package nl.davydehaas.adventofcode.year2015.day01;
 
 import java.util.List;
 
