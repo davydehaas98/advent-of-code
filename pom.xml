@@ -18,8 +18,10 @@
         <java.version>23</java.version>
 
         <assertj.version>3.26.3</assertj.version>
+        <checkstyle.version>10.17.0</checkstyle.version>
         <jacoco.version>0.8.12</jacoco.version>
         <junit.version>5.11.3</junit.version>
+        <maven-checkstyle.version>3.4.0</maven-checkstyle.version>
         <sonar.version>5.0.0.4389</sonar.version>
         <surefire.version>3.5.2</surefire.version>
     </properties>
@@ -47,6 +49,11 @@
                 <version>${surefire.version}</version>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle.version}</version>
+            </plugin>
+            <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>${sonar.version}</version>
@@ -60,6 +67,44 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>validate</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <configuration>
+                            <configLocation>checkstyle.xml</configLocation>
+                            <failOnViolation>false</failOnViolation>
+                            <linkXRef>false</linkXRef>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.puppycrawl.tools</groupId>
+                                <artifactId>checkstyle</artifactId>
+                                <version>${checkstyle.version}</version>
+                            </dependency>
+                        </dependencies>
+                        <executions>
+                            <execution>
+                                <id>validate</id>
+                                <phase>validate</phase>
+                                <configuration>
+                                    <consoleOutput>true</consoleOutput>
+                                </configuration>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <profile>
             <id>coverage</id>
             <activation>
