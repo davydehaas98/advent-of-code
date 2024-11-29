@@ -2,10 +2,18 @@ root = true
 
 [*]
 charset = utf-8
-insert_final_newline = true
-indent_style = space
-indent_size = 4
-ij_continuation_indent_size = 8
+end_of_line = lf
 
-[*.{yml,yaml}]
+# Continuation indent size isn't officially supported yet
+# noinspection EditorConfigKeyCorrectness
+continuation_indent_size = 8
+ij_continuation_indent_size = 8
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+
+[*.{js,json,yml,yaml}]
 indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
