@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class Day01Test {
-    
+
     @Test
     void part1Test() {
         int result = Part1.solve();

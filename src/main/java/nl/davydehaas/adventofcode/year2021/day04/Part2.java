@@ -1,31 +1,31 @@
 package nl.davydehaas.adventofcode.year2021.day04;
 
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import static nl.davydehaas.adventofcode.util.Utils.readFile;
-import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
-
 class Part2 {
-    
+
     private static final List<String> INPUT = readFile(2021, 4);
-    
+
     public static void main(String[] args) {
         timeSolution(Part2::solve);
     }
-    
+
     static int solve() {
         List<Integer> calledNumbers = getCalledNumbers();
         List<List<Integer[]>> boards = getBoards();
         int score = 0;
-        
+
         for (Integer calledNumber : calledNumbers) {
             Iterator<List<Integer[]>> iterator = boards.iterator();
             while (iterator.hasNext()) {
                 List<Integer[]> board = iterator.next();
-                
+
                 for (int i = 0; i < board.size(); i++) {
                     // Board contains called number
                     if (board.get(i)[0].equals(calledNumber)) {
@@ -49,14 +49,18 @@ class Part2 {
                         }
                     }
                 }
-                if (score > 0) break;
+                if (score > 0) {
+                    break;
+                }
             }
-            if (score > 0) break;
+            if (score > 0) {
+                break;
+            }
         }
-        
+
         return score;
     }
-    
+
     private static boolean checkBingo(List<Integer[]> board) {
         // Check horizontal
         for (int i = 0; i < 25; i += 5) {
@@ -79,27 +83,27 @@ class Part2 {
                 return true;
             }
         }
-        
+
         return false;
     }
-    
+
     private static List<Integer> getCalledNumbers() {
         return Arrays.stream(INPUT.getFirst().split(","))
                 .map(Integer::parseInt)
                 .toList();
     }
-    
+
     private static List<List<Integer[]>> getBoards() {
         List<Integer[]> board = new ArrayList<>();
         List<List<Integer[]>> boards = new ArrayList<>();
-        
+
         for (String line : INPUT.subList(1, INPUT.size())) {
             if (!line.isEmpty()) {
                 List<Integer> numbers = Arrays.stream(line.replace("  ", " ").split(" "))
                         .filter(string -> !string.isEmpty())
                         .map(Integer::parseInt)
                         .toList();
-                
+
                 for (Integer number : numbers) {
                     board.add(new Integer[]{number, 0});
                 }
@@ -110,7 +114,7 @@ class Part2 {
                 board = new ArrayList<>();
             }
         }
-        
+
         return boards;
     }
 }

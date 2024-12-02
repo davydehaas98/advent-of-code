@@ -51,8 +51,7 @@ class Part2 {
             } else {
                 lowestY = Math.min(h, l);
             }
-        }
-        else {
+        } else {
             lowestY = lowestX;
         }
 

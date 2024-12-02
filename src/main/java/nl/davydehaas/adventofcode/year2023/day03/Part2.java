@@ -1,19 +1,19 @@
 package nl.davydehaas.adventofcode.year2023.day03;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static nl.davydehaas.adventofcode.util.Utils.readFile;
 import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Part2 {
-    
+
     private static final List<String> INPUT = readFile(2023, 3);
-    
+
     public static void main(String[] args) {
         timeSolution(Part2::solve);
     }
-    
+
     static int solve() {
         int size = INPUT.size() + 2;
         char[][] engine = new char[size][size];
@@ -26,9 +26,9 @@ class Part2 {
                 }
             }
         }
-        
+
         int sum = 0;
-        
+
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 if (engine[y][x] == '*') {
@@ -68,10 +68,10 @@ class Part2 {
                 }
             }
         }
-        
+
         return sum;
     }
-    
+
     private static int retrieveFullNumber(int y, int x, char[][] engine) {
         StringBuilder number = new StringBuilder();
         number.append(engine[y][x]);
@@ -91,7 +91,7 @@ class Part2 {
                 break;
             }
         }
-        
+
         return Integer.parseInt(number.toString());
     }
 }

@@ -1,19 +1,19 @@
 package nl.davydehaas.adventofcode.year2021.day07;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static nl.davydehaas.adventofcode.util.Utils.readFile;
 import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
+import java.util.Arrays;
+import java.util.List;
+
 class Part1 {
-    
+
     private static final List<String> INPUT = readFile(2021, 7);
-    
+
     public static void main(String[] args) {
         timeSolution(Part1::solve);
     }
-    
+
     static int solve() {
         List<Integer> crabPositions = getCrabPositions();
         int bestCost = Integer.MAX_VALUE;
@@ -28,7 +28,7 @@ class Part1 {
         }
         return bestCost;
     }
-    
+
     private static List<Integer> getCrabPositions() {
         return Arrays.stream(INPUT.getFirst().split(","))
                 .map(Integer::parseInt)

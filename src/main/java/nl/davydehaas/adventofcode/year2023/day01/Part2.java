@@ -1,21 +1,21 @@
 package nl.davydehaas.adventofcode.year2023.day01;
 
-import java.util.List;
-
 import static nl.davydehaas.adventofcode.util.Utils.readFile;
 import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
+import java.util.List;
+
 class Part2 {
-    
+
     private static final List<String> INPUT = readFile(2023, 1);
-    
+
     public static void main(String[] args) {
         timeSolution(Part2::solve);
     }
-    
+
     static int solve() {
         int sum = 0;
-        
+
         for (String line : INPUT) {
             Character firstNumber = null;
             for (int i = 0; i < line.length(); i++) {
@@ -43,20 +43,38 @@ class Part2 {
             }
             sum += Integer.parseInt(firstNumber + "" + lastNumber);
         }
-        
+
         return sum;
     }
-    
+
     private static Character isSpelledDigit(String spelledDigit) {
-        if (spelledDigit.contains("one")) return '1';
-        if (spelledDigit.contains("two")) return '2';
-        if (spelledDigit.contains("three")) return '3';
-        if (spelledDigit.contains("four")) return '4';
-        if (spelledDigit.contains("five")) return '5';
-        if (spelledDigit.contains("six")) return '6';
-        if (spelledDigit.contains("seven")) return '7';
-        if (spelledDigit.contains("eight")) return '8';
-        if (spelledDigit.contains("nine")) return '9';
+        if (spelledDigit.contains("one")) {
+            return '1';
+        }
+        if (spelledDigit.contains("two")) {
+            return '2';
+        }
+        if (spelledDigit.contains("three")) {
+            return '3';
+        }
+        if (spelledDigit.contains("four")) {
+            return '4';
+        }
+        if (spelledDigit.contains("five")) {
+            return '5';
+        }
+        if (spelledDigit.contains("six")) {
+            return '6';
+        }
+        if (spelledDigit.contains("seven")) {
+            return '7';
+        }
+        if (spelledDigit.contains("eight")) {
+            return '8';
+        }
+        if (spelledDigit.contains("nine")) {
+            return '9';
+        }
         return null;
     }
 }

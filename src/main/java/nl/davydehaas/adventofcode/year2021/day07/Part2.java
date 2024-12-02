@@ -1,19 +1,19 @@
 package nl.davydehaas.adventofcode.year2021.day07;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static nl.davydehaas.adventofcode.util.Utils.readFile;
 import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
+import java.util.Arrays;
+import java.util.List;
+
 class Part2 {
-    
+
     private static final List<String> INPUT = readFile(2021, 7);
-    
+
     public static void main(String[] args) {
         timeSolution(Part2::solve);
     }
-    
+
     static int solve() {
         List<Integer> crabPositions = getCrabPositions();
         int bestCost = Integer.MAX_VALUE;
@@ -26,23 +26,23 @@ class Part2 {
                 // Calculate fuel consumption
                 cost += fuelConsumption(difference);
             }
-            
+
             bestCost = Math.min(cost, bestCost);
         }
-        
+
         return bestCost;
     }
-    
+
     private static Integer fuelConsumption(int difference) {
         int fuelConsumption = 0;
-        
+
         for (int j = 1; j < difference + 1; j++) {
             fuelConsumption += j;
         }
-        
+
         return fuelConsumption;
     }
-    
+
     private static List<Integer> getCrabPositions() {
         return Arrays.stream(INPUT.getFirst().split(","))
                 .map(Integer::parseInt)

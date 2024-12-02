@@ -1,31 +1,31 @@
 package nl.davydehaas.adventofcode.year2021.day05;
 
-import java.awt.*;
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
+
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static nl.davydehaas.adventofcode.util.Utils.readFile;
-import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
-
 class Part2 {
-    
+
     private static final List<String> INPUT = readFile(2021, 5);
-    
+
     public static void main(String[] args) {
         timeSolution(Part2::solve);
     }
-    
+
     static int solve() {
         List<Point[]> lines = getLines();
         LinkedHashMap<Point, Integer> vents = new LinkedHashMap<>();
         int dangerousAreaCounter = 0;
-        
+
         for (Point[] points : lines) {
             Point startPoint = points[0];
             Point endPoint = points[1];
-            
+
             if (startPoint.x != endPoint.x && startPoint.y != endPoint.y) {
                 createDiagonalVent(startPoint, endPoint, vents);
             } else if (startPoint.x != endPoint.x) {
@@ -34,82 +34,77 @@ class Part2 {
                 createVerticalVent(startPoint, endPoint, vents);
             }
         }
-        
+
         for (Map.Entry<Point, Integer> vent : vents.entrySet()) {
             if (vent.getValue() > 1) {
                 dangerousAreaCounter++;
             }
         }
-        
+
         return dangerousAreaCounter;
     }
-    
+
     private static void createDiagonalVent(Point startPoint, Point endPoint, LinkedHashMap<Point, Integer> vents) {
         int difference;
-        // Diagonal line from left to right
         if (startPoint.x < endPoint.x) {
+            // Diagonal line from left to right
             difference = endPoint.x - startPoint.x;
-            // Diagonal line from top left to bottom right
             if (startPoint.y < endPoint.y) {
+                // Diagonal line from top left to bottom right
                 for (int i = 0; i < difference + 1; i++) {
                     addVent(vents, new Point(startPoint.x + i, startPoint.y + i));
                 }
-            }
-            // Diagonal line from bottom left to top right
-            else {
+            } else {
+                // Diagonal line from bottom left to top right
                 for (int i = 0; i < difference + 1; i++) {
                     addVent(vents, new Point(startPoint.x + i, startPoint.y - i));
                 }
             }
-        }
-        // Diagonal line from right to left
-        else {
+        } else {
+            // Diagonal line from right to left
             difference = startPoint.x - endPoint.x;
-            // Diagonal from top right to bottom left
             if (startPoint.y < endPoint.y) {
+                // Diagonal from top right to bottom left
                 for (int i = 0; i < difference + 1; i++) {
                     addVent(vents, new Point(startPoint.x - i, startPoint.y + i));
                 }
-            }
-            // Diagonal line bottom right to top left
-            else {
+            } else {
+                // Diagonal line bottom right to top left
                 for (int i = 0; i < difference + 1; i++) {
                     addVent(vents, new Point(startPoint.x - i, startPoint.y - i));
                 }
             }
         }
     }
-    
+
     private static void createHorizontalVent(Point startPoint, Point endPoint, LinkedHashMap<Point, Integer> vents) {
-        // Start point x smaller than end point x
         if (startPoint.x < endPoint.x) {
+            // Start point x smaller than end point x
             for (int x = startPoint.x; x < endPoint.x + 1; x++) {
                 addVent(vents, new Point(x, startPoint.y));
             }
-        }
-        // Start point x greater than end point x
-        else if (startPoint.x > endPoint.x) {
+        } else if (startPoint.x > endPoint.x) {
+            // Start point x greater than end point x
             for (int x = endPoint.x; x < startPoint.x + 1; x++) {
                 addVent(vents, new Point(x, startPoint.y));
             }
         }
     }
-    
+
     private static void createVerticalVent(Point startPoint, Point endPoint, LinkedHashMap<Point, Integer> vents) {
-        // Start point y smaller than end point y
         if (startPoint.y < endPoint.y) {
+            // Start point y smaller than end point y
             for (int y = startPoint.y; y < endPoint.y + 1; y++) {
                 addVent(vents, new Point(startPoint.x, y));
             }
-        }
-        // Start point y greater than end point y
-        else if (startPoint.y > endPoint.y) {
+        } else if (startPoint.y > endPoint.y) {
+            // Start point y greater than end point y
             for (int y = endPoint.y; y < startPoint.y + 1; y++) {
                 addVent(vents, new Point(startPoint.x, y));
             }
         }
     }
-    
+
     private static void addVent(LinkedHashMap<Point, Integer> vents, Point point) {
         if (vents.containsKey(point)) {
             int value = vents.get(point);
@@ -118,10 +113,10 @@ class Part2 {
             vents.put(point, 1);
         }
     }
-    
+
     private static List<Point[]> getLines() {
         List<Point[]> lines = new ArrayList<>();
-        
+
         INPUT.forEach(fileLine -> lines.add(new Point[]{
                 new Point(
                         Integer.parseInt(fileLine.split(" -> ")[0].split(",")[0]),
@@ -132,7 +127,7 @@ class Part2 {
                         Integer.parseInt(fileLine.split(" -> ")[1].split(",")[1])
                 )
         }));
-        
+
         return lines;
     }
 }

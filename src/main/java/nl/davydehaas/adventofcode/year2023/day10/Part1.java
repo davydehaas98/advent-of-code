@@ -1,18 +1,18 @@
 package nl.davydehaas.adventofcode.year2023.day10;
 
-import java.util.List;
-
 import static nl.davydehaas.adventofcode.util.Utils.readFile;
 import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
+import java.util.List;
+
 class Part1 {
-    
+
     private static final List<String> INPUT = readFile(2023, 10, false);
-    
+
     public static void main(String[] args) {
         timeSolution(Part1::solve);
     }
-    
+
     static int solve() {
         char[][] tiles = new char[INPUT.size()][INPUT.size()];
         int startPositionX = 0;
@@ -27,12 +27,12 @@ class Part1 {
                 }
             }
         }
-        
+
         Direction previousDirection;
         int currentX = startPositionX;
         int currentY = startPositionY;
         // Manual step since S is unknown
-        if (getConnections(tiles[startPositionY][startPositionX - 1]).contains(Direction.EAST)){
+        if (getConnections(tiles[startPositionY][startPositionX - 1]).contains(Direction.EAST)) {
             currentX = currentX - 1;
             previousDirection = Direction.WEST;
         } else if (getConnections(tiles[startPositionY][startPositionX + 1]).contains(Direction.WEST)) {
@@ -64,10 +64,10 @@ class Part1 {
                 previousDirection = Direction.WEST;
             }
         } while (currentX != startPositionX || currentY != startPositionY);
-        
+
         return steps / 2 + 1;
     }
-    
+
     private static List<Direction> getConnections(char c) {
         return switch (c) {
             case '-' -> List.of(Direction.EAST, Direction.WEST);
@@ -79,11 +79,11 @@ class Part1 {
             default -> List.of();
         };
     }
-}
 
-enum Direction {
-    NORTH,
-    EAST,
-    SOUTH,
-    WEST
+    private enum Direction {
+        NORTH,
+        EAST,
+        SOUTH,
+        WEST
+    }
 }

@@ -14,7 +14,7 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static long solve() {
+    static Number solve() {
         return INPUT.stream()
                 .map(dimensions -> Arrays.stream(dimensions.split("x"))
                         .map(Integer::parseInt).toArray(Integer[]::new))

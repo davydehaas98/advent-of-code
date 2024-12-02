@@ -1,19 +1,19 @@
 package nl.davydehaas.adventofcode.year2023.day06;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static nl.davydehaas.adventofcode.util.Utils.readFile;
 import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
+import java.util.Arrays;
+import java.util.List;
+
 class Part1 {
-    
+
     private static final List<String> INPUT = readFile(2023, 6);
-    
+
     public static void main(String[] args) {
         timeSolution(Part1::solve);
     }
-    
+
     static int solve() {
         int[] time = Arrays.stream(INPUT.get(0).split(":\\s+")[1].split("\\s+"))
                 .mapToInt(Integer::parseInt)
@@ -21,7 +21,7 @@ class Part1 {
         int[] distance = Arrays.stream(INPUT.get(1).split(":\\s+")[1].split("\\s+"))
                 .mapToInt(Integer::parseInt)
                 .toArray();
-        
+
         int totalWins = 1;
         for (int race = 0; race < time.length; race++) {
             int currentTime = time[race];
@@ -33,7 +33,7 @@ class Part1 {
                 }
             }
         }
-        
+
         return totalWins;
     }
 }

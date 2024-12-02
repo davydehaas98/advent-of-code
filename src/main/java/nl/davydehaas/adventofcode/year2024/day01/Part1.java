@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Part1 {
-    
+
     private static final List<String> INPUT = readFile(2024, 1);
-    
+
     public static void main(String[] args) {
         timeSolution(Part1::solve);
     }
-    
+
     static int solve() {
         List<Integer> leftList = new ArrayList<>();
         List<Integer> rightList = new ArrayList<>();

@@ -6,14 +6,14 @@ import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 import java.util.List;
 
 class Part2 {
-    
+
     private static final List<String> INPUT = readFile(2015, 1);
-    
+
     public static void main(String[] args) {
         timeSolution(Part2::solve);
     }
-    
-    static int solve() {
+
+    static Number solve() {
         int floor = 0;
         char[] instructions = INPUT.getFirst().toCharArray();
 
