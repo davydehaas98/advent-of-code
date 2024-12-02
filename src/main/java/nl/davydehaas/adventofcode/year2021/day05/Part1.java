@@ -3,7 +3,6 @@ package nl.davydehaas.adventofcode.year2021.day05;
 import static nl.davydehaas.adventofcode.util.Utils.readFile;
 import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -94,5 +93,8 @@ class Part1 {
         }));
 
         return lines;
+    }
+
+    record Point(int x, int y) {
     }
 }

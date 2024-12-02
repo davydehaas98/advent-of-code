@@ -3,7 +3,6 @@ package nl.davydehaas.adventofcode.year2021.day11;
 import static nl.davydehaas.adventofcode.util.Utils.readFile;
 import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +55,7 @@ class Part1 {
             }
         }
         // Set energy level to 0 for all flashed octopuses
-        flashedOctopuses.forEach(f -> octopuses[f.x][f.y] = 0);
+        flashedOctopuses.forEach(f -> octopuses[f.column][f.row] = 0);
 
         return flashedOctopuses.size();
     }
@@ -75,5 +74,8 @@ class Part1 {
                 }
             }
         }
+    }
+
+    record Point(int column, int row) {
     }
 }

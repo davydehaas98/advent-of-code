@@ -73,24 +73,24 @@ class Part1 {
         final boolean big;
         final Set<Cave> connections = new LinkedHashSet<>();
 
-        public Cave(String name) {
+        Cave(String name) {
             this.name = name;
             this.big = Character.isUpperCase(name.charAt(0));
         }
 
-        public String getName() {
+        String getName() {
             return name;
         }
 
-        public boolean isBig() {
+        boolean isBig() {
             return big;
         }
 
-        public Set<Cave> getConnections() {
+        Set<Cave> getConnections() {
             return connections;
         }
 
-        public void addConnection(Cave cave) {
+        void addConnection(Cave cave) {
             connections.add(cave);
         }
     }
