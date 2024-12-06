@@ -17,7 +17,7 @@ class Part2 {
         timeSolution(Part2::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         heightMap = getHeightMap();
         List<Point> lowestPoints = new ArrayList<>();
         List<Integer> basins = new ArrayList<>();

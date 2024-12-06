@@ -17,7 +17,7 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         Set<String[]> connections = getConnections();
         List<Cave> caves = getCaves(connections);
         List<List<Cave>> paths = new ArrayList<>();

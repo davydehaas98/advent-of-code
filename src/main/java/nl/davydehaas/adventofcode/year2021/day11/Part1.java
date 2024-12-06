@@ -16,7 +16,7 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         octopuses = getOctopuses();
         int steps = 100;
         int flashCounter = 0;

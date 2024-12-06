@@ -14,7 +14,7 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         int[] time = Arrays.stream(INPUT.get(0).split(":\\s+")[1].split("\\s+"))
                 .mapToInt(Integer::parseInt)
                 .toArray();

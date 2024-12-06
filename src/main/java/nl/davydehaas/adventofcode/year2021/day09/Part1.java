@@ -15,7 +15,7 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         heightMap = getHeightMap();
         int sum = 0;
 

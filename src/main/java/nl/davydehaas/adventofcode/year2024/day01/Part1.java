@@ -14,7 +14,7 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         List<Integer> leftList = new ArrayList<>();
         List<Integer> rightList = new ArrayList<>();
         for (String line : INPUT) {

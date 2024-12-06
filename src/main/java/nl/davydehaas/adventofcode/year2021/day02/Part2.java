@@ -13,7 +13,7 @@ class Part2 {
         timeSolution(Part2::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         int aim = 0;
         int depth = 0;
         int horizontalPosition = 0;

@@ -13,7 +13,7 @@ class Part2 {
         timeSolution(Part2::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         int sum = 0;
 
         for (String line : INPUT) {

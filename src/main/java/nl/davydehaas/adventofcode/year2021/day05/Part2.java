@@ -16,7 +16,7 @@ class Part2 {
         timeSolution(Part2::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         List<Point[]> lines = getLines();
         LinkedHashMap<Point, Integer> vents = new LinkedHashMap<>();
         int dangerousAreaCounter = 0;

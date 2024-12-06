@@ -13,7 +13,7 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         char[][] tiles = new char[INPUT.size()][INPUT.size()];
         int startPositionX = 0;
         int startPositionY = 0;

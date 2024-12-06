@@ -12,7 +12,7 @@ public final class Utils {
     private Utils() {
     }
 
-    /// @param supplier The method to time.
+    /// @param supplier The method to time as `Supplier`.
     public static void timeSolution(Supplier<Number> supplier) {
         long startTime = System.nanoTime();
         Number result = supplier.get();
@@ -27,14 +27,17 @@ public final class Utils {
                 """, supplier.getClass(), result, duration);
     }
 
+    /// @param year   The year as `Integer`.
+    /// @param day    The day as `Integer`.
+    /// @return the file as `List` of lines as `String`.
     public static List<String> readFile(int year, int day) {
         return readFile(year, day, false);
     }
 
-    /// @param year   The year as [Integer].
-    /// @param day    The day as [Integer].
+    /// @param year   The year as `Integer`.
+    /// @param day    The day as `Integer`.
     /// @param isTest Set this to true if it should use the `*-test.txt` file instead.
-    /// @return the file as list of lines as string.
+    /// @return the file as `List` of lines as `String`.
     public static List<String> readFile(int year, int day, boolean isTest) {
         String pathPrefix = day < 10 ? "/year%d/day0%d" : "/year%d/day%d";
         String pathSuffix = isTest ? "-test.txt" : ".txt";

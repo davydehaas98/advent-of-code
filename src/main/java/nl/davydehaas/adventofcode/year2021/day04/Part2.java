@@ -16,7 +16,7 @@ class Part2 {
         timeSolution(Part2::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         List<Integer> calledNumbers = getCalledNumbers();
         List<List<Integer[]>> boards = getBoards();
         int score = 0;

@@ -14,7 +14,7 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static Integer solve() {
+    static Number solve() {
         List<String[]> policies = getPolicies();
         int validPasswordCounter = 0;
 

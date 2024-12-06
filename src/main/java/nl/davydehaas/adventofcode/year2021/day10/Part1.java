@@ -14,7 +14,7 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         AtomicInteger points = new AtomicInteger();
 
         for (String line : INPUT) {

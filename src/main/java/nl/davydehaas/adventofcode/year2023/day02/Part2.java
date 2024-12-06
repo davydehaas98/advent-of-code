@@ -17,7 +17,7 @@ class Part2 {
         timeSolution(Part1::solve);
     }
 
-    static int calculate() {
+    static Number solve() {
         int sum = 0;
 
         for (String game : INPUT) {

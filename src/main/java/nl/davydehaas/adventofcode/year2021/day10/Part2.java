@@ -14,7 +14,7 @@ class Part2 {
         timeSolution(Part2::solve);
     }
 
-    static Long solve() {
+    static Number solve() {
         List<Long> points = new ArrayList<>();
 
         for (String line : INPUT) {

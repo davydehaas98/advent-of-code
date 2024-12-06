@@ -13,7 +13,7 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         int size = INPUT.size() + 2;
         char[][] engine = new char[size][size];
         for (int y = 0; y < size; y++) {

@@ -15,7 +15,7 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         char[] instructions = INPUT.getFirst().toCharArray();
         Map<String, String[]> nodes = getNodes();
 

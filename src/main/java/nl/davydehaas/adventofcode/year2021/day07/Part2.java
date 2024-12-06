@@ -14,7 +14,7 @@ class Part2 {
         timeSolution(Part2::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         List<Integer> crabPositions = getCrabPositions();
         int bestCost = Integer.MAX_VALUE;
         // Try each position

@@ -10,10 +10,10 @@ class Part2 {
     private static final List<String> INPUT = readFile(2023, 6);
 
     public static void main(String[] args) {
-        timeSolution(Part2::calculate);
+        timeSolution(Part2::solve);
     }
 
-    static long calculate() {
+    static Number solve() {
         long time = Long.parseLong(INPUT.get(0).replaceAll("\\D+", ""));
         long distance = Long.parseLong(INPUT.get(1).replaceAll("\\D+", ""));
 

@@ -16,7 +16,7 @@ class Part2 {
     }
 
 
-    static int solve() {
+    static Number solve() {
         int safeReports = 0;
 
         for (String line : INPUT) {

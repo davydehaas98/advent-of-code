@@ -14,7 +14,7 @@ class Part2 {
         timeSolution(Part2::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         List<String> binaryNumbers = INPUT;
         List<String> oxygenGeneratorRatings = binaryNumbers;
         List<String> co2ScrubberRatings = binaryNumbers;

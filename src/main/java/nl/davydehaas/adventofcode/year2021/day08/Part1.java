@@ -14,10 +14,10 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static long solve() {
+    static Number solve() {
         List<String> outputValues = getOutputValues();
 
-        return outputValues.stream()
+        return (int) outputValues.stream()
                 .filter(string -> string.length() == 2
                         || string.length() == 3
                         || string.length() == 4

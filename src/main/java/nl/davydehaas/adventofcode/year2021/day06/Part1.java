@@ -15,7 +15,7 @@ class Part1 {
         timeSolution(Part1::solve);
     }
 
-    static int solve() {
+    static Number solve() {
         List<Integer> lanternFishes = new ArrayList<>(getLanternFishes());
         int days = 80;
         int internalTimer = 8;
