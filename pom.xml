@@ -6,7 +6,7 @@
 
     <groupId>nl.davydehaas</groupId>
     <artifactId>advent-of-code</artifactId>
-    <version>1.1.4-SNAPSHOT</version>
+    <version>1.1.5-SNAPSHOT</version>
     <name>Advent of Code</name>
     <description>Code written for Advent of Code</description>
 
@@ -20,7 +20,7 @@
 
         <checkstyle.version>10.20.2</checkstyle.version>
         <jacoco.version>0.8.12</jacoco.version>
-        <junit.version>5.11.3</junit.version>
+        <junit.version>5.11.4</junit.version>
         <maven-checkstyle.version>3.6.0</maven-checkstyle.version>
         <sonar.version>5.0.0.4389</sonar.version>
         <surefire.version>3.5.2</surefire.version>
