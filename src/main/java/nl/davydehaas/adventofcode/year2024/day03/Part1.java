@@ -3,14 +3,14 @@ package nl.davydehaas.adventofcode.year2024.day03;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static nl.davydehaas.adventofcode.util.Utils.readFile;
-import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
+import static nl.davydehaas.adventofcode.util.InputReader.readFile;
+import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part1 {
 
     private static final List<String> INPUT = readFile(2024, 3);
     
-    static void main() {
+    void main() {
         timeSolution(Part1::solve);
     }
 

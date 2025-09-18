@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5.0.0
+
       - name: Set up Java
         uses: actions/setup-java@v5.0.0
         with:
@@ -17,8 +18,10 @@ jobs:
           java-version-file: .java-version
           java-package: 'jdk'
           cache: maven
+
       - name: Run mvn clean verify
         run: mvn clean verify
+
       - name: Publish Surefire test report
         uses: dorny/test-reporter@v2.1.1
         if: always()

@@ -3,8 +3,8 @@ package nl.davydehaas.adventofcode.year2021.day09;
 import java.util.ArrayList;
 import java.util.List;
 
-import static nl.davydehaas.adventofcode.util.Utils.readFile;
-import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
+import static nl.davydehaas.adventofcode.util.InputReader.readFile;
+import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part2 {
 
@@ -13,7 +13,7 @@ class Part2 {
     private static int[][] heightMap;
     private static int sizeCounter;
     
-    static void main() {
+    void main() {
         timeSolution(Part2::solve);
     }
 

@@ -2,8 +2,8 @@ package nl.davydehaas.adventofcode.year2020.day01;
 
 import java.util.List;
 
-import static nl.davydehaas.adventofcode.util.Utils.readFile;
-import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
+import static nl.davydehaas.adventofcode.util.InputReader.readFile;
+import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part1 {
 
@@ -11,7 +11,7 @@ class Part1 {
 
     private static final int TARGET = 2020;
     
-    static void main() {
+    void main() {
         timeSolution(Part1::solve);
     }
 

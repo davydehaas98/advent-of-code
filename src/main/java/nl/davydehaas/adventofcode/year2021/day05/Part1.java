@@ -5,14 +5,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static nl.davydehaas.adventofcode.util.Utils.readFile;
-import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
+import static nl.davydehaas.adventofcode.util.InputReader.readFile;
+import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part1 {
 
     private static final List<String> INPUT = readFile(2021, 5);
     
-    static void main() {
+    void main() {
         timeSolution(Part1::solve);
     }
 

@@ -5,14 +5,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static nl.davydehaas.adventofcode.util.Utils.readFile;
-import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
+import static nl.davydehaas.adventofcode.util.InputReader.readFile;
+import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part2 {
 
     private static final List<String> INPUT = readFile(2021, 8);
     
-    static void main() {
+    void main() {
         timeSolution(Part2::solve);
     }
 
