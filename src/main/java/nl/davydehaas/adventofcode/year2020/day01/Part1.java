@@ -1,17 +1,17 @@
 package nl.davydehaas.adventofcode.year2020.day01;
 
+import java.util.List;
+
 import static nl.davydehaas.adventofcode.util.Utils.readFile;
 import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
-
-import java.util.List;
 
 class Part1 {
 
     private static final List<String> INPUT = readFile(2020, 1);
 
     private static final int TARGET = 2020;
-
-    public static void main(String[] args) {
+    
+    static void main() {
         timeSolution(Part1::solve);
     }
 

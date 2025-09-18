@@ -1,21 +1,20 @@
 package nl.davydehaas.adventofcode.year2024.day02;
 
-import static nl.davydehaas.adventofcode.util.Utils.readFile;
-import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
+
 class Part2 {
 
     private static final List<String> INPUT = readFile(2024, 2, false);
-
-    public static void main(String[] args) {
+    
+    static void main() {
         timeSolution(Part2::solve);
     }
-
-
+    
     static Number solve() {
         int safeReports = 0;
 
@@ -41,10 +40,10 @@ class Part2 {
             if (!checkLevel(currentLevel, nextLevel, increasing)) {
                 if (tolerateBadLevel) {
                     for (int j = 0; j < report.size(); j++) {
-                        List<Integer> DampenedList = new ArrayList<>(report);
+                        List<Integer> dampenedList = new ArrayList<>(report);
                         //noinspection SuspiciousListRemoveInLoop
-                        DampenedList.remove(j);
-                        if (checkReport(DampenedList, false)) {
+                        dampenedList.remove(j);
+                        if (checkReport(dampenedList, false)) {
                             return true;
                         }
                     }

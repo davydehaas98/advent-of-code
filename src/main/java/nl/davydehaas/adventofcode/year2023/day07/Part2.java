@@ -1,19 +1,19 @@
-package nl.davydehaas.adventofcode.year2015.day00;
+package nl.davydehaas.adventofcode.year2023.day07;
 
 import java.util.List;
 
 import static nl.davydehaas.adventofcode.util.Utils.readFile;
 import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
-class Part1 {
-
-    private static final List<String> INPUT = readFile(2015, 0);
+class Part2 {
+    
+    private static final List<String> INPUT = readFile(2023, 7);
     
     static void main() {
-        timeSolution(Part1::solve);
+        timeSolution(Part2::solve);
     }
-
-    static Number solve() {
+    
+    static int solve() {
         return INPUT.size();
     }
 }

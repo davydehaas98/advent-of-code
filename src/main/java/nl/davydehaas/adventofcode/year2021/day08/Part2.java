@@ -1,18 +1,18 @@
 package nl.davydehaas.adventofcode.year2021.day08;
 
-import static nl.davydehaas.adventofcode.util.Utils.readFile;
-import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
+
 class Part2 {
 
     private static final List<String> INPUT = readFile(2021, 8);
-
-    public static void main(String[] args) {
+    
+    static void main() {
         timeSolution(Part2::solve);
     }
 

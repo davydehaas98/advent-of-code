@@ -1,9 +1,9 @@
 package nl.davydehaas.adventofcode.year2023.day02;
 
+import java.util.List;
+
 import static nl.davydehaas.adventofcode.util.Utils.readFile;
 import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
-
-import java.util.List;
 
 class Part2 {
 
@@ -12,8 +12,8 @@ class Part2 {
     private static int MAX_RED_CUBES = 0;
     private static int MAX_GREEN_CUBES = 0;
     private static int MAX_BLUE_CUBES = 0;
-
-    public static void main(String[] args) {
+    
+    static void main() {
         timeSolution(Part1::solve);
     }
 

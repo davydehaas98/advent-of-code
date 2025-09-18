@@ -1,18 +1,18 @@
 package nl.davydehaas.adventofcode.year2021.day11;
 
-import static nl.davydehaas.adventofcode.util.Utils.readFile;
-import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
 class Part1 {
 
     private static final List<String> INPUT = readFile(2021, 11);
 
     private static int[][] octopuses;
-
-    public static void main(String[] args) {
+    
+    static void main() {
         timeSolution(Part1::solve);
     }
 
@@ -69,7 +69,7 @@ class Part1 {
                     try {
                         octopuses[column + i][row + j] += 1;
                         flashOctopus(column + i, row + j, flashedOctopuses);
-                    } catch (IndexOutOfBoundsException ignored) {
+                    } catch (IndexOutOfBoundsException _) {
                     }
                 }
             }

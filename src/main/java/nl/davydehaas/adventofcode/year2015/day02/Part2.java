@@ -1,16 +1,16 @@
 package nl.davydehaas.adventofcode.year2015.day02;
 
-import static nl.davydehaas.adventofcode.util.Utils.readFile;
-import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
-
 import java.util.Arrays;
 import java.util.List;
+
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
 
 class Part2 {
 
     private static final List<String> INPUT = readFile(2015, 2);
-
-    public static void main(String[] args) {
+    
+    static void main() {
         timeSolution(Part2::solve);
     }
 

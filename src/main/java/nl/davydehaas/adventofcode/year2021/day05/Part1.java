@@ -1,18 +1,18 @@
 package nl.davydehaas.adventofcode.year2021.day05;
 
-import static nl.davydehaas.adventofcode.util.Utils.readFile;
-import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static nl.davydehaas.adventofcode.util.Utils.readFile;
+import static nl.davydehaas.adventofcode.util.Utils.timeSolution;
+
 class Part1 {
 
     private static final List<String> INPUT = readFile(2021, 5);
-
-    public static void main(String[] args) {
+    
+    static void main() {
         timeSolution(Part1::solve);
     }
 
@@ -71,8 +71,7 @@ class Part1 {
 
     private static void addVent(LinkedHashMap<Point, Integer> vents, Point point) {
         if (vents.containsKey(point)) {
-            int value = vents.get(point);
-            vents.put(point, value + 1);
+            vents.compute(point, (_, value) -> value + 1);
         } else {
             vents.put(point, 1);
         }

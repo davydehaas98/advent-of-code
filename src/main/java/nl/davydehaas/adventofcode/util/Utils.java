@@ -24,7 +24,7 @@ public final class Utils {
                 %s
                 Duration (ms):
                 %s
-                """, supplier.getClass(), result, duration);
+                """.formatted(supplier.getClass(), result, duration));
     }
 
     /// @param year   The year as `Integer`.
