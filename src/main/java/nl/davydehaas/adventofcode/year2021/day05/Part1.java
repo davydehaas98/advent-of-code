@@ -9,38 +9,38 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part1 {
-
+    
     private static final List<String> INPUT = readFile(2021, 5);
     
     void main() {
         timeSolution(Part1::solve);
     }
-
+    
     static Number solve() {
         List<Point[]> lines = getLines();
         LinkedHashMap<Point, Integer> vents = new LinkedHashMap<>();
         int dangerousAreaCounter = 0;
-
+        
         for (Point[] points : lines) {
             Point startPoint = points[0];
             Point endPoint = points[1];
-
+            
             if (startPoint.x != endPoint.x && startPoint.y == endPoint.y) {
                 createHorizontalVent(startPoint, endPoint, vents);
             } else if (startPoint.x == endPoint.x && startPoint.y != endPoint.y) {
                 createVerticalVent(startPoint, endPoint, vents);
             }
         }
-
+        
         for (Map.Entry<Point, Integer> vent : vents.entrySet()) {
             if (vent.getValue() > 1) {
                 dangerousAreaCounter++;
             }
         }
-
+        
         return dangerousAreaCounter;
     }
-
+    
     private static void createHorizontalVent(Point startPoint, Point endPoint, LinkedHashMap<Point, Integer> vents) {
         if (startPoint.x < endPoint.x) {
             // Start point x smaller than end point x
@@ -54,7 +54,7 @@ class Part1 {
             }
         }
     }
-
+    
     private static void createVerticalVent(Point startPoint, Point endPoint, LinkedHashMap<Point, Integer> vents) {
         if (startPoint.y < endPoint.y) {
             // Start point y smaller than end point y
@@ -68,7 +68,7 @@ class Part1 {
             }
         }
     }
-
+    
     private static void addVent(LinkedHashMap<Point, Integer> vents, Point point) {
         if (vents.containsKey(point)) {
             vents.compute(point, (_, value) -> value + 1);
@@ -76,10 +76,10 @@ class Part1 {
             vents.put(point, 1);
         }
     }
-
+    
     private static List<Point[]> getLines() {
         List<Point[]> lines = new ArrayList<>();
-
+        
         INPUT.forEach(fileLine -> lines.add(new Point[]{
                 new Point(
                         Integer.parseInt(fileLine.split(" -> ")[0].split(",")[0]),
@@ -90,10 +90,10 @@ class Part1 {
                         Integer.parseInt(fileLine.split(" -> ")[1].split(",")[1])
                 )
         }));
-
+        
         return lines;
     }
-
+    
     record Point(int x, int y) {
     }
 }

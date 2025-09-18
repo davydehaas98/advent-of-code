@@ -6,13 +6,13 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part1 {
-
+    
     private static final List<String> INPUT = readFile(2023, 3);
     
     void main() {
         timeSolution(Part1::solve);
     }
-
+    
     static Number solve() {
         int size = INPUT.size() + 2;
         char[][] engine = new char[size][size];
@@ -25,10 +25,10 @@ class Part1 {
                 }
             }
         }
-
+        
         int sum = 0;
         StringBuilder number;
-
+        
         for (int y = 0; y < size; y++) {
             number = new StringBuilder();
             for (int x = 0; x < size; x++) {
@@ -42,10 +42,10 @@ class Part1 {
                 }
             }
         }
-
+        
         return sum;
     }
-
+    
     private static boolean isPartNumber(int xLeft, int xRight, int y, char[][] engine) {
         // Left
         int left = xLeft - 1;
@@ -80,7 +80,7 @@ class Part1 {
                 return true;
             }
         }
-
+        
         return false;
     }
 }

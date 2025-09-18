@@ -6,22 +6,22 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part2 {
-
+    
     private static final List<String> INPUT = readFile(2020, 1);
-
+    
     private static final int TARGET = 2020;
     
     void main() {
         timeSolution(Part2::solve);
     }
-
+    
     static Number solve() {
         int[] expenses = INPUT.stream()
                 .mapToInt(Integer::parseInt)
                 .toArray();
         int[] sumToTarget = new int[]{0, 0, 0};
         boolean breakFlag = false;
-
+        
         for (int expense : expenses) {
             for (int secondExpense : expenses) {
                 // Check if it does not compare itself
@@ -47,7 +47,7 @@ class Part2 {
                 break;
             }
         }
-
+        
         return sumToTarget[0] * sumToTarget[1] * sumToTarget[2];
     }
 }

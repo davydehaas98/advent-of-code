@@ -6,16 +6,16 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part2 {
-
+    
     private static final List<String> INPUT = readFile(2023, 1);
     
     void main() {
         timeSolution(Part2::solve);
     }
-
+    
     static Number solve() {
         int sum = 0;
-
+        
         for (String line : INPUT) {
             Character firstNumber = null;
             for (int i = 0; i < line.length(); i++) {
@@ -43,10 +43,10 @@ class Part2 {
             }
             sum += Integer.parseInt(firstNumber + "" + lastNumber);
         }
-
+        
         return sum;
     }
-
+    
     private static Character isSpelledDigit(String spelledDigit) {
         if (spelledDigit.contains("one")) {
             return '1';

@@ -8,7 +8,7 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part2 {
-
+    
     private static final List<String> INPUT = readFile(2024, 2, false);
     
     void main() {
@@ -17,7 +17,7 @@ class Part2 {
     
     static Number solve() {
         int safeReports = 0;
-
+        
         for (String line : INPUT) {
             List<Integer> report = Arrays.stream(line.split(" "))
                     .map(Integer::parseInt)
@@ -30,13 +30,13 @@ class Part2 {
         }
         return safeReports;
     }
-
+    
     private static boolean checkReport(List<Integer> report, boolean tolerateBadLevel) {
         boolean increasing = report.get(0) < report.get(1);
         for (int i = 0; i < report.size(); i++) {
             int currentLevel = report.get(i);
             int nextLevel = report.get(i + 1);
-
+            
             if (!checkLevel(currentLevel, nextLevel, increasing)) {
                 if (tolerateBadLevel) {
                     for (int j = 0; j < report.size(); j++) {
@@ -50,14 +50,14 @@ class Part2 {
                 }
                 return false;
             }
-
+            
             if (i == report.size() - 2) {
                 return true;
             }
         }
         return true;
     }
-
+    
     private static boolean checkLevel(int currentLevel, int nextLevel, boolean increasing) {
         int difference;
         if (increasing) {

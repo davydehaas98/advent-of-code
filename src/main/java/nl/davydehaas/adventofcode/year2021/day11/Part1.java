@@ -7,30 +7,30 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part1 {
-
+    
     private static final List<String> INPUT = readFile(2021, 11);
-
+    
     private static int[][] octopuses;
     
     void main() {
         timeSolution(Part1::solve);
     }
-
+    
     static Number solve() {
         octopuses = getOctopuses();
         int steps = 100;
         int flashCounter = 0;
-
+        
         for (int i = 0; i < steps; i++) {
             flashCounter += simulateStep();
         }
-
+        
         return flashCounter;
     }
-
+    
     private static int[][] getOctopuses() {
         int[][] octopuses = new int[INPUT.size()][INPUT.getFirst().length()];
-
+        
         for (int column = 0; column < octopuses[0].length; column++) {
             for (int row = 0; row < octopuses.length; row++) {
                 octopuses[row][column] = Integer.parseInt(String.valueOf(INPUT.get(row).charAt(column)));
@@ -38,7 +38,7 @@ class Part1 {
         }
         return octopuses;
     }
-
+    
     private static int simulateStep() {
         // Increase all octopuses its energy levels by 1
         for (int column = 0; column < octopuses.length; column++) {
@@ -48,7 +48,7 @@ class Part1 {
         }
         // Calculate flashing
         List<Point> flashedOctopuses = new ArrayList<>();
-
+        
         for (int column = 0; column < octopuses.length; column++) {
             for (int row = 0; row < octopuses[0].length; row++) {
                 flashOctopus(column, row, flashedOctopuses);
@@ -56,14 +56,14 @@ class Part1 {
         }
         // Set energy level to 0 for all flashed octopuses
         flashedOctopuses.forEach(f -> octopuses[f.column][f.row] = 0);
-
+        
         return flashedOctopuses.size();
     }
-
+    
     private static void flashOctopus(int column, int row, List<Point> flashedOctopuses) {
         if (octopuses[column][row] > 9 && !flashedOctopuses.contains(new Point(column, row))) {
             flashedOctopuses.add(new Point(column, row));
-
+            
             for (int i = -1; i < 2; i++) {
                 for (int j = -1; j < 2; j++) {
                     try {
@@ -75,7 +75,7 @@ class Part1 {
             }
         }
     }
-
+    
     record Point(int column, int row) {
     }
 }

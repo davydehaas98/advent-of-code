@@ -7,13 +7,13 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part2 {
-
+    
     private static final List<String> INPUT = readFile(2024, 3);
     
     void main() {
         timeSolution(Part2::solve);
     }
-
+    
     static Number solve() {
         Pattern pattern = Pattern.compile("mul\\([0-9]{1,3},[0-9]{1,3}\\)|do\\(\\)|don't\\(\\)");
         long mul = 0;

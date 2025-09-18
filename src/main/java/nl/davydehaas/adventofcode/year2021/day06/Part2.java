@@ -8,23 +8,23 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part2 {
-
+    
     private static final List<String> INPUT = readFile(2021, 6);
     
     void main() {
         timeSolution(Part2::solve);
     }
-
+    
     static Number solve() {
         int days = 256;
         int internalTimer = 8;
         int resetInternalTimer = 6;
         HashMap<Integer, Long> lanternFishes = getLanternFishes(internalTimer);
         long totalLanternFishes = 0;
-
+        
         for (int i = 0; i < days; i++) {
             long lanternFishInLaborAmount = 0;
-
+            
             for (int j = 0; j < lanternFishes.size(); j++) {
                 if (lanternFishes.containsKey(j)) {
                     long lanternFishAmount = lanternFishes.get(j);
@@ -47,26 +47,26 @@ class Part2 {
             // Reset internal timer of fish that gave birth.
             lanternFishes.put(internalTimer, lanternFishInLaborAmount);
         }
-
+        
         for (int i = 0; i < lanternFishes.size(); i++) {
             totalLanternFishes += lanternFishes.get(i);
         }
-
+        
         return totalLanternFishes;
     }
-
+    
     private static HashMap<Integer, Long> getLanternFishes(int internalTimer) {
         HashMap<Integer, Long> lanternFishes = new HashMap<>();
         // Set up HashMap
         for (int i = 0; i < internalTimer; i++) {
             lanternFishes.put(i, 0L);
         }
-
+        
         Arrays.stream(INPUT.getFirst().split(","))
                 .map(Integer::parseInt)
                 .toList()
                 .forEach(timer -> lanternFishes.put(timer, lanternFishes.get(timer) + 1));
-
+        
         return lanternFishes;
     }
 }

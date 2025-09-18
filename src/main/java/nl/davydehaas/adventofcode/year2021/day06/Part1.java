@@ -8,25 +8,25 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part1 {
-
+    
     private static final List<String> INPUT = readFile(2021, 6);
     
     void main() {
         timeSolution(Part1::solve);
     }
-
+    
     static Number solve() {
         List<Integer> lanternFishes = new ArrayList<>(getLanternFishes());
         int days = 80;
         int internalTimer = 8;
         int resetInternalTimer = 6;
-
+        
         for (int i = 0; i < days; i++) {
             int amount = lanternFishes.size();
-
+            
             for (int j = 0; j < amount; j++) {
                 int lanternFish = lanternFishes.get(j);
-
+                
                 if (lanternFish > 0) {
                     lanternFishes.set(j, lanternFish - 1);
                 } else {
@@ -35,10 +35,10 @@ class Part1 {
                 }
             }
         }
-
+        
         return lanternFishes.size();
     }
-
+    
     private static List<Integer> getLanternFishes() {
         return Arrays.stream(INPUT.getFirst().split(","))
                 .map(Integer::parseInt)

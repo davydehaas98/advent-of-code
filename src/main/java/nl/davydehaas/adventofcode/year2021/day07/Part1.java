@@ -7,13 +7,13 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part1 {
-
+    
     private static final List<String> INPUT = readFile(2021, 7);
     
     void main() {
         timeSolution(Part1::solve);
     }
-
+    
     static Number solve() {
         List<Integer> crabPositions = getCrabPositions();
         int bestCost = Integer.MAX_VALUE;
@@ -28,7 +28,7 @@ class Part1 {
         }
         return bestCost;
     }
-
+    
     private static List<Integer> getCrabPositions() {
         return Arrays.stream(INPUT.getFirst().split(","))
                 .map(Integer::parseInt)

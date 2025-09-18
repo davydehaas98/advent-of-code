@@ -6,13 +6,13 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part1 {
-
+    
     private static final List<String> INPUT = readFile(2023, 4);
     
     void main() {
         timeSolution(Part1::solve);
     }
-
+    
     static Number solve() {
         int points = 0;
         for (String line : INPUT) {
@@ -21,7 +21,7 @@ class Part1 {
                     .substring(match[0].indexOf(": ") + 2)
                     .split(" ");
             String[] numbers = match[1].split(" ");
-
+            
             int won = 0;
             for (String number : numbers) {
                 if (number.isBlank()) {

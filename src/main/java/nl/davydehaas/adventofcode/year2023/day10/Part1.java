@@ -6,13 +6,13 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part1 {
-
+    
     private static final List<String> INPUT = readFile(2023, 10, false);
     
     void main() {
         timeSolution(Part1::solve);
     }
-
+    
     static Number solve() {
         char[][] tiles = new char[INPUT.size()][INPUT.size()];
         int startPositionX = 0;
@@ -27,7 +27,7 @@ class Part1 {
                 }
             }
         }
-
+        
         Direction previousDirection;
         int currentX = startPositionX;
         int currentY = startPositionY;
@@ -64,10 +64,10 @@ class Part1 {
                 previousDirection = Direction.WEST;
             }
         } while (currentX != startPositionX || currentY != startPositionY);
-
+        
         return steps / 2 + 1;
     }
-
+    
     private static List<Direction> getConnections(char c) {
         return switch (c) {
             case '-' -> List.of(Direction.EAST, Direction.WEST);
@@ -79,7 +79,7 @@ class Part1 {
             default -> List.of();
         };
     }
-
+    
     private enum Direction {
         NORTH,
         EAST,

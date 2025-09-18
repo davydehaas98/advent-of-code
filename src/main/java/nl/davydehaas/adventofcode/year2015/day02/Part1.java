@@ -7,13 +7,13 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part1 {
-
+    
     private static final List<String> INPUT = readFile(2015, 2);
     
     void main() {
         timeSolution(Part1::solve);
     }
-
+    
     static Number solve() {
         return INPUT.stream()
                 .map(dimensions -> Arrays.stream(dimensions.split("x"))
@@ -21,14 +21,14 @@ class Part1 {
                 .mapToInt(dimensions -> calculateWrapping(dimensions[0], dimensions[1], dimensions[2]))
                 .sum();
     }
-
+    
     private static int calculateWrapping(int l, int w, int h) {
         int x = l * w;
         int y = w * h;
         int z = h * l;
-
+        
         int total = 2 * x + 2 * y + 2 * z;
-
+        
         if (x <= y && x <= z) {
             return total + x;
         } else if (y <= x && y <= z) {

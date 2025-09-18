@@ -7,13 +7,13 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part2 {
-
+    
     private static final List<String> INPUT = readFile(2023, 3);
     
     void main() {
         timeSolution(Part2::solve);
     }
-
+    
     static Number solve() {
         int size = INPUT.size() + 2;
         char[][] engine = new char[size][size];
@@ -26,9 +26,9 @@ class Part2 {
                 }
             }
         }
-
+        
         int sum = 0;
-
+        
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 if (engine[y][x] == '*') {
@@ -68,10 +68,10 @@ class Part2 {
                 }
             }
         }
-
+        
         return sum;
     }
-
+    
     private static int retrieveFullNumber(int y, int x, char[][] engine) {
         StringBuilder number = new StringBuilder();
         number.append(engine[y][x]);
@@ -91,7 +91,7 @@ class Part2 {
                 break;
             }
         }
-
+        
         return Integer.parseInt(number.toString());
     }
 }

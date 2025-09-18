@@ -7,16 +7,16 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part2 {
-
+    
     private static final List<String> INPUT = readFile(2021, 10);
     
     void main() {
         timeSolution(Part2::solve);
     }
-
+    
     static Number solve() {
         List<Long> points = new ArrayList<>();
-
+        
         for (String line : INPUT) {
             line = removeValidChunks(line);
             // Check if line is not corrupted
@@ -24,19 +24,19 @@ class Part2 {
                 points.add(calculateIncompleteLinePoints(line));
             }
         }
-
+        
         return points.stream()
                 .sorted()
                 .toList()
                 .get(points.size() / 2);
     }
-
+    
     private static long calculateIncompleteLinePoints(String line) {
         long points = 0;
-
+        
         for (int i = line.length() - 1; 0 <= i; i--) {
             points *= 5;
-
+            
             switch (line.charAt(i)) {
                 case '(' -> points += 1;
                 case '[' -> points += 2;
@@ -44,23 +44,23 @@ class Part2 {
                 case '<' -> points += 4;
             }
         }
-
+        
         return points;
     }
-
+    
     private static String removeValidChunks(String navigationLine) {
         while (true) {
             int lineLength = navigationLine.length();
-
+            
             navigationLine = navigationLine.replace("()", "").replace("[]", "")
                     .replace("{}", "")
                     .replace("<>", "");
-
+            
             if (lineLength == navigationLine.length()) {
                 break;
             }
         }
-
+        
         return navigationLine;
     }
 }

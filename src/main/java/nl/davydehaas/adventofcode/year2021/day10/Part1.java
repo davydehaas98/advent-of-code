@@ -7,40 +7,40 @@ import static nl.davydehaas.adventofcode.util.InputReader.readFile;
 import static nl.davydehaas.adventofcode.util.SolutionTimer.timeSolution;
 
 class Part1 {
-
+    
     private static final List<String> INPUT = readFile(2021, 10);
     
     void main() {
         timeSolution(Part1::solve);
     }
-
+    
     static Number solve() {
         AtomicInteger points = new AtomicInteger();
-
+        
         for (String line : INPUT) {
             points.addAndGet(calculateCorruptedLinePoints(removeValidChunks(line)));
         }
-
+        
         return points.get();
     }
-
+    
     private static String removeValidChunks(String navigationLine) {
         int startLength = navigationLine.length();
-
+        
         String modifiedNavigationLine = navigationLine
                 .replace("()", "")
                 .replace("[]", "")
                 .replace("{}", "")
                 .replace("<>", "");
-
+        
         // Check if navigation line is modified
         if (startLength != modifiedNavigationLine.length()) {
             return removeValidChunks(modifiedNavigationLine);
         }
-
+        
         return modifiedNavigationLine;
     }
-
+    
     private static int calculateCorruptedLinePoints(String line) {
         for (char c : line.toCharArray()) {
             switch (c) {
@@ -54,7 +54,7 @@ class Part1 {
                     return 25137;
             }
         }
-
+        
         return 0;
     }
 }
