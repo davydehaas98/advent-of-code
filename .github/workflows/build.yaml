@@ -13,7 +13,7 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v5.0.0
         with:
-          distribution: 'temurin'
+          distribution: 'liberica'
           java-version-file: .java-version
           java-package: 'jdk'
           cache: maven
